@@ -1,20 +1,16 @@
-export const fetchProduct = async () => {
+import { Product } from "@/types/types";
+
+export const fetchProduct = async (): Promise<Product[]> => {
   try {
-    const response = await fetch("http://localhost:8000/product");
-    console.log(response);
+    const response = await fetch("http://localhost:8000/product", {
+      cache: "default",
+    });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
-    const data = await response.json();
-    console.log("Data fetched successfully:", data);
+    const data: Product[] = await response.json();
     return data;
   } catch (error) {
-    if (error instanceof Error) {
-      // Handle specific error message
-      console.error("Error is:", error.message);
-      return "iqneba mere xelmisawvdomi"; // Return your custom error message
-    } else {
-      console.error("Unexpected error:", error);
-      return "An unexpected error occurred"; // Handle other unexpected errors
-    }
+    console.error("Failed to fetch products:", error);
+    return [];
   }
 };

@@ -1,58 +1,41 @@
 import Link from "next/link";
 import React from "react";
 import Wrapper from "../_components/Wrapper";
-import vector from "../../public/images/vector.svg";
-import Image from "next/image";
 import { fetchProduct } from "../api";
+import { Product } from "@/types/types";
+import SingleItemDisplay from "./SingleItemDisplay";
+import Fillter from "./Fillter";
 
 const Page = async () => {
-  const data = await fetchProduct();
+  const data: Product[] = await fetchProduct();
   console.log("Fetched data:", data);
 
   return (
     <div className="p-5">
       <Wrapper>
-        <div className="flex gap-1 text-xs text-[#00000099] px-5 pt-6 pb-4">
+        <div className="flex gap-1 text-xs text-[#00000099] px-5 pt-6 pb-4 tiny:hidden">
           <Link href="/">მთავარი</Link>
           <span>&gt;</span>
           <span>Shop</span>
         </div>
-        <div className="grid grid-cols-[1fr_4fr] gap-5">
-          <div className="w-full p-5">
-            <ul className="text-[#000000] text-base font-medium flex flex-col gap-5">
-              <li className="flex items-center justify-between">
-                <span>ძაღლები</span>
-                <Image
-                  src={vector}
-                  alt="vector svg"
-                  className="cursor-pointer"
-                />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>კატები</span>
-                <Image
-                  src={vector}
-                  alt="vector svg"
-                  className="cursor-pointer"
-                />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>ჩიტები</span>
-                <Image
-                  src={vector}
-                  alt="vector svg"
-                  className="cursor-pointer"
-                />
-              </li>
-            </ul>
+        <div className="grid grid-cols-[1fr_4fr] gap-5 tiny:grid-cols-1">
+          <div className="w-full p-5 tiny:p-0">
+            <Fillter />
           </div>
-          <div className="grid grid-cols-4 gap-6">
-            {data.length}
-            {/* {data && data.length > 0 ? (
-              data.map((item, index) => <div key={index}>{item.name}</div>)
-            ) : (
-              <div>No products found.</div>
-            )} */}
+          <div className="grid grid-cols-4 gap-6 tiny:grid-cols-2">
+            {data.map((item) => (
+              <div
+                key={item._id}
+                className="tiny:max-w-[157px] tiny:max-h-[233px]"
+              >
+                <SingleItemDisplay
+                  title={item.title}
+                  image={item.image}
+                  price={item.price}
+                  discount={item.discount}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </Wrapper>
