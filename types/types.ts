@@ -12,3 +12,5 @@ export interface SingleItemDisplayProps {
   price: string;
   discount: number;
 }
+
+export type AnimalType = "dogs" | "cats" | "birds";
