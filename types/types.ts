@@ -14,3 +14,5 @@ export interface SingleItemDisplayProps {
 }
 
 export type AnimalType = "dogs" | "cats" | "birds";
+
+export type Animals = ["dogs", "cats", "birds"];

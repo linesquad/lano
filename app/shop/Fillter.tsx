@@ -7,8 +7,8 @@ import cat from "../../public/images/cat.svg";
 import parrot from "../../public/images/parrot.svg";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AnimalType } from "@/types/types";
-import { useRouter } from "next/router";
+import { Animals, AnimalType } from "@/types/types";
+// import { useRouter } from "next/router";
 
 const Fillter = () => {
   // const router = useRouter();
@@ -43,16 +43,21 @@ const Fillter = () => {
   //   router.push(`/${animalType}/${option.toLowerCase()}`);
   // };
 
-  const options: Record<AnimalType, string[]> = {
+  const options: Record<
+    AnimalType,
+    ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"]
+  > = {
     dogs: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
     cats: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
     birds: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
   };
+
+  const animals: Animals = ["dogs", "cats", "birds"];
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
         <ul className="text-[#000000] text-base font-medium flex gap-5 md:flex-row md:w-full md:justify-between lg:flex lg:flex-col">
-          {(["dogs", "cats", "birds"] as AnimalType[]).map((item, index) => (
+          {animals.map((item, index) => (
             <li
               key={index}
               className="flex flex-col items-start md:gap-[86px] lg:gap-0 cursor-pointer"
