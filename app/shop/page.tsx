@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Wrapper from "../_components/Wrapper";
-import { fetchCategory, fetchProduct } from "../api";
+import { fetchCategory, fetchProduct, fetchProductById } from "../api";
 import SingleItemDisplay from "./SingleItemDisplay";
 import Fillter from "./Fillter";
 import { Category, Product } from "@/types/types";
@@ -9,6 +9,8 @@ import { Category, Product } from "@/types/types";
 const Page = async () => {
   const data: Product[] = await fetchProduct();
   const category: Category[] = await fetchCategory();
+  // const dataById = await fetchProductById();
+  // console.log(dataById);
 
   return (
     <div className="p-5">

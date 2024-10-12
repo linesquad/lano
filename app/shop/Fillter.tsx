@@ -14,7 +14,7 @@ const Fillter: React.FC<{ item: Category }> = ({ item }) => {
   const router = useRouter();
   const subCategory = item.subCategory;
 
-  console.log(item);
+  console.log(subCategory);
 
   const [isOpen, setIsOpen] = useState<{ [key: string]: boolean }>({});
 
@@ -39,7 +39,7 @@ const Fillter: React.FC<{ item: Category }> = ({ item }) => {
               className="flex flex-col items-start md:gap-[86px] lg:gap-0 cursor-pointer"
               onClick={() => {
                 toggleOpen(item.title);
-                handleFilterClick(item.title);
+                // handleFilterClick(item.title);
               }}
             >
               <div className="flex items-center justify-between w-full">
