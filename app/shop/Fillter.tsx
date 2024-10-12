@@ -8,8 +8,10 @@ import dog from "../../public/images/dog.svg";
 import cat from "../../public/images/cat.svg";
 import parrot from "../../public/images/parrot.svg";
 import { Category } from "@/types/types";
+import { useRouter } from "next/navigation";
 
 const Fillter: React.FC<{ item: Category }> = ({ item }) => {
+  const router = useRouter();
   const subCategory = item.subCategory;
 
   console.log(item);
@@ -23,6 +25,10 @@ const Fillter: React.FC<{ item: Category }> = ({ item }) => {
     }));
   };
 
+  const handleFilterClick = (category: string) => {
+    router.push(`/shop/${category}`);
+  };
+
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
@@ -31,7 +37,10 @@ const Fillter: React.FC<{ item: Category }> = ({ item }) => {
             <li
               key={item._id}
               className="flex flex-col items-start md:gap-[86px] lg:gap-0 cursor-pointer"
-              onClick={() => toggleOpen(item.title)}
+              onClick={() => {
+                toggleOpen(item.title);
+                handleFilterClick(item.title);
+              }}
             >
               <div className="flex items-center justify-between w-full">
                 <span className="hover:text-[#EE5335]">
@@ -61,6 +70,7 @@ const Fillter: React.FC<{ item: Category }> = ({ item }) => {
                         <li
                           key={_id}
                           className="text-sm text-gray-600 py-1 hover:text-gray-800"
+                          onClick={() => handleFilterClick(title)}
                         >
                           {title === "Toys"
                             ? "სათამაშო"
