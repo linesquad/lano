@@ -21,7 +21,7 @@ const Footer = (): JSX.Element => {
                 alt="time"
                 width={18}
                 height={18}
-                className="mt-[2px]"
+                className="mt-[2px] md:mt-[5px]"
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
@@ -46,7 +46,7 @@ const Footer = (): JSX.Element => {
                 alt="time"
                 width={18}
                 height={18}
-                className="mt-[2px]"
+                className="mt-[2px] md:mt-[5px]"
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
