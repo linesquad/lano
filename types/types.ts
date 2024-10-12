@@ -6,13 +6,13 @@ export interface Product {
   image: string;
 }
 
-export interface SingleItemDisplayProps {
+export interface Category {
+  _id: string;
   title: string;
-  image: string;
-  price: string;
-  discount: number;
+  parentId: string | null;
+  subCategory: [];
+  products: [];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
-
-export type AnimalType = "dogs" | "cats" | "birds";
-
-export type Animals = ["dogs", "cats", "birds"];

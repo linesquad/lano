@@ -2,72 +2,42 @@
 
 import Image from "next/image";
 import vector from "../../public/images/vector.svg";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import dog from "../../public/images/dog.svg";
 import cat from "../../public/images/cat.svg";
 import parrot from "../../public/images/parrot.svg";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Animals, AnimalType } from "@/types/types";
-// import { useRouter } from "next/router";
+import { Category } from "@/types/types";
 
-const Fillter = () => {
-  // const router = useRouter();
+const Fillter: React.FC<{ item: Category }> = ({ item }) => {
+  const subCategory = item.subCategory;
 
-  const [isOpen, setIsOpen] = useState<Record<AnimalType, boolean>>({
-    dogs: false,
-    cats: false,
-    birds: false,
-  });
+  console.log(item);
 
-  // const [activeOption, setActiveOption] = useState<
-  //   Record<AnimalType, string | null>
-  // >({
-  //   dogs: null,
-  //   cats: null,
-  //   birds: null,
-  // });
+  const [isOpen, setIsOpen] = useState<{ [key: string]: boolean }>({});
 
-  const toggleOpen = (item: AnimalType) => {
+  const toggleOpen = (category: string) => {
     setIsOpen((prevState) => ({
       ...prevState,
-      [item]: !prevState[item],
+      [category]: !prevState[category],
     }));
   };
 
-  // const handleOptionClick = (animalType: AnimalType, option: string) => {
-  //   setActiveOption((prevState) => ({
-  //     ...prevState,
-  //     [animalType]: option,
-  //   }));
-  //   // Update the URL based on the selected option
-  //   router.push(`/${animalType}/${option.toLowerCase()}`);
-  // };
-
-  const options: Record<
-    AnimalType,
-    ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"]
-  > = {
-    dogs: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
-    cats: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
-    birds: ["საკვები", "აქსესუარები", "სათამაშო", "მოვლის საშუალებები"],
-  };
-
-  const animals: Animals = ["dogs", "cats", "birds"];
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
         <ul className="text-[#000000] text-base font-medium flex gap-5 md:flex-row md:w-full md:justify-between lg:flex lg:flex-col">
-          {animals.map((item, index) => (
+          {item && item.title ? (
             <li
-              key={index}
+              key={item._id}
               className="flex flex-col items-start md:gap-[86px] lg:gap-0 cursor-pointer"
-              onClick={() => toggleOpen(item)}
+              onClick={() => toggleOpen(item.title)}
             >
               <div className="flex items-center justify-between w-full">
                 <span className="hover:text-[#EE5335]">
-                  {item === "dogs"
+                  {item.title === "Dogs"
                     ? "ძაღლები"
-                    : item === "cats"
+                    : item.title === "Cats"
                     ? "კატები"
                     : "ჩიტები"}
                 </span>
@@ -78,7 +48,7 @@ const Fillter = () => {
                 />
               </div>
               <AnimatePresence>
-                {isOpen[item] && (
+                {isOpen[item.title] && (
                   <motion.ul
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -86,19 +56,33 @@ const Fillter = () => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden pt-2 w-full"
                   >
-                    {options[item].map((option, idx) => (
-                      <li
-                        key={idx}
-                        className="text-sm text-gray-600 py-1 hover:text-gray-800"
-                      >
-                        {option}
-                      </li>
-                    ))}
+                    {subCategory ? (
+                      subCategory.map(({ title, _id }) => (
+                        <li
+                          key={_id}
+                          className="text-sm text-gray-600 py-1 hover:text-gray-800"
+                        >
+                          {title === "Toys"
+                            ? "სათამაშო"
+                            : title === "Accessory"
+                            ? "აქსესუარები"
+                            : title === "Self Care"
+                            ? "მოვლის საშუალებები"
+                            : title === "Meals"
+                            ? "საკვები"
+                            : "სხვა"}
+                        </li>
+                      ))
+                    ) : (
+                      <li>SubCategory does not exist</li>
+                    )}
                   </motion.ul>
                 )}
               </AnimatePresence>
             </li>
-          ))}
+          ) : (
+            <li>Item does not exist</li>
+          )}
         </ul>
       </div>
 
