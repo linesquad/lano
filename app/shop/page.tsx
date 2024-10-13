@@ -1,16 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import Wrapper from "../_components/Wrapper";
-import { fetchCategory, fetchProduct, fetchProductById } from "../api";
+import { fetchProduct } from "../api";
 import SingleItemDisplay from "./SingleItemDisplay";
 import Fillter from "./Fillter";
-import { Category, Product } from "@/types/types";
+import { Product } from "@/types/types";
 
 const Page = async () => {
   const data: Product[] = await fetchProduct();
-  const category: Category[] = await fetchCategory();
-  // const dataById = await fetchProductById();
-  // console.log(dataById);
 
   return (
     <div className="p-5">
@@ -25,21 +22,13 @@ const Page = async () => {
             <span>Shop</span>
           </div>
           <div className=" p-5 tiny:p-0  md:w-full lg:hidden">
-            {category.map((item) => (
-              <div key={item._id}>
-                <Fillter item={item} />
-              </div>
-            ))}
+            <Fillter />
           </div>
         </div>
         {/* grid-cols-[1fr_4fr] */}
         <div className="grid  gap-5 tiny:grid-cols-1 smaller:grid-cols-1 grid-cols-1 lg:grid-cols-[1fr_4fr]">
           <div className="hidden p-5 lg:block">
-            {category.map((item) => (
-              <div key={item._id}>
-                <Fillter item={item} />
-              </div>
-            ))}
+            <Fillter />
           </div>
           <div className="grid grid-cols-3 gap-6 tiny:grid-cols-2 smaller:grid-cols-2 md:grid-cols-4">
             {data.map((item) => (

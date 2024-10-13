@@ -23,7 +23,6 @@ export const fetchCategory = async (): Promise<Category[]> => {
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const category: Category[] = await response.json();
-    console.log(category);
     return category;
   } catch (error) {
     console.error("Failed to fetch products", error);
