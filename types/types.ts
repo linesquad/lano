@@ -1,9 +1,10 @@
 export interface Product {
   _id: string;
   title: string;
-  price: string;
-  discount: number;
+  price: number;
+  currentPrice: string;
   image: string;
+  dFlag: boolean;
 }
 
 export interface Category {

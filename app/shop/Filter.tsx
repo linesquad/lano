@@ -6,7 +6,7 @@ import cat from "../../public/images/cat.svg";
 import parrot from "../../public/images/parrot.svg";
 import { Category } from "@/types/types";
 
-const Fillter = async () => {
+const Filter = async () => {
   const category: Category[] = await fetchCategory();
 
   return (
@@ -69,4 +69,4 @@ const Fillter = async () => {
   );
 };
 
-export default Fillter;
+export default Filter;

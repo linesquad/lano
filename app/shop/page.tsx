@@ -3,11 +3,12 @@ import React from "react";
 import Wrapper from "../_components/Wrapper";
 import { fetchProduct } from "../api";
 import SingleItemDisplay from "./SingleItemDisplay";
-import Fillter from "./Fillter";
+import Filter from "./Filter";
 import { Product } from "@/types/types";
 
 const Page = async () => {
   const data: Product[] = await fetchProduct();
+  // console.log(data);
 
   return (
     <div className="p-5">
@@ -22,13 +23,12 @@ const Page = async () => {
             <span>Shop</span>
           </div>
           <div className=" p-5 tiny:p-0  md:w-full lg:hidden">
-            <Fillter />
+            <Filter />
           </div>
         </div>
-        {/* grid-cols-[1fr_4fr] */}
         <div className="grid  gap-5 tiny:grid-cols-1 smaller:grid-cols-1 grid-cols-1 lg:grid-cols-[1fr_4fr]">
           <div className="hidden p-5 lg:block">
-            <Fillter />
+            <Filter />
           </div>
           <div className="grid grid-cols-3 gap-6 tiny:grid-cols-2 smaller:grid-cols-2 md:grid-cols-4">
             {data.map((item) => (
@@ -36,12 +36,7 @@ const Page = async () => {
                 key={item._id}
                 className="tiny:max-w-[157px] tiny:max-h-[233px]"
               >
-                <SingleItemDisplay
-                  title={item.title}
-                  image={item.image}
-                  price={item.price}
-                  discount={item.discount}
-                />
+                <SingleItemDisplay item={item} />
               </div>
             ))}
           </div>
