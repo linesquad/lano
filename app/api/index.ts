@@ -12,3 +12,21 @@ export const fetchPopularProducts = async () => {
     return [];
   }
 };
+
+export const fetchSaleProducts = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:8000/product?discount=true",
+      {
+        cache: "default",
+      }
+    );
+    if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
+  }
+};

@@ -1,4 +1,4 @@
-export interface IPopularProducts {
+export interface ILandingProducts {
   _id: string;
   title: string;
   price: {
@@ -6,5 +6,5 @@ export interface IPopularProducts {
   };
   discount: number;
   image: string;
-  score: string;
+  score: string | null;
 }

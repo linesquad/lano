@@ -1,14 +1,14 @@
-import { IPopularProducts } from "@/types/types";
+import { ILandingProducts } from "@/types/types";
 import Image from "next/image";
 
 interface SingleProductProps {
-  product: IPopularProducts;
+  product: ILandingProducts;
 }
 
 export default function SingleProduct({ product }: SingleProductProps) {
   return (
     <div>
-      <div className="pt-[8px] pl-[8px] relative w-[150px] md:w-[170px] lg:w-[200px]">
+      <div className="pt-[8px] pl-[8px] relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px]">
         <Image
           src="/images/product.png"
           alt="პროდუცტ"
@@ -34,7 +34,9 @@ export default function SingleProduct({ product }: SingleProductProps) {
         )}
       </div>
       <p className="text-[14px] text-[#000000] font-medium mt-[8px]">
-        {product.title}
+        {product.title.length > 10
+          ? product.title.slice(0, 10) + "..."
+          : product.title}
       </p>
     </div>
   );

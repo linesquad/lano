@@ -1,9 +1,9 @@
-import { IPopularProducts } from "@/types/types";
+import { ILandingProducts } from "@/types/types";
 import { fetchPopularProducts } from "../api";
 import TrendCarousel from "./TrendCarousel";
 
 export default async function PopularProducts() {
-  const popularProducts: IPopularProducts[] = await fetchPopularProducts();
+  const popularProducts: ILandingProducts[] = await fetchPopularProducts();
 
   return (
     <div>

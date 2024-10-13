@@ -7,11 +7,11 @@ import "swiper/css";
 import SingleProduct from "./SingleProduct";
 import Image from "next/image";
 import { Swiper as SwiperCore } from "swiper";
-import { IPopularProducts } from "@/types/types";
+import { ILandingProducts } from "@/types/types";
 
 interface TrendCarouselProps {
   title: string;
-  products: IPopularProducts[];
+  products: ILandingProducts[];
 }
 
 export default function TrendCarousel({ title, products }: TrendCarouselProps) {
@@ -54,16 +54,19 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              slidesPerView={2}
+              slidesPerView={Math.min(products.length, 1)}
               breakpoints={{
+                300: {
+                  slidesPerView: Math.min(products.length, 2),
+                },
                 450: {
-                  slidesPerView: 3,
+                  slidesPerView: Math.min(products.length, 3),
                 },
                 740: {
-                  slidesPerView: 4,
+                  slidesPerView: Math.min(products.length, 4),
                 },
                 1024: {
-                  slidesPerView: 5,
+                  slidesPerView: Math.min(products.length, 5),
                 },
               }}
             >
