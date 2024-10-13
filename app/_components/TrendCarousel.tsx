@@ -4,6 +4,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Wrapper from "./Wrapper";
 import SingleProduct from "./SingleProduct";
@@ -57,6 +59,8 @@ export default function TrendCarousel({ title }: TrendCarouselProps) {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselPrevious className="md:ml-[20px] lg:ml-[40px] xl:ml-[50px] hidden md:flex items-center justify-center" />
+              <CarouselNext className="md:mr-[20px] lg:mr-[40px] xl:mr-[50px] hidden md:flex items-center justify-center" />
             </Carousel>
           </div>
         </div>
