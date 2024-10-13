@@ -7,12 +7,14 @@ import "swiper/css";
 import SingleProduct from "./SingleProduct";
 import Image from "next/image";
 import { Swiper as SwiperCore } from "swiper";
+import { IPopularProducts } from "@/types/types";
 
 interface TrendCarouselProps {
   title: string;
+  products: IPopularProducts[];
 }
 
-export default function TrendCarousel({ title }: TrendCarouselProps) {
+export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const swiperRef = useRef<SwiperCore>();
 
   const handlePrev = () => {
@@ -37,7 +39,7 @@ export default function TrendCarousel({ title }: TrendCarouselProps) {
           <div className="ml-[20px] mt-[16px] flex items-center gap-[3px]">
             <div
               onClick={handlePrev}
-              className="hidden w-[84px] h-[44px] shadow-lg shadow-[#00000026] rounded-[50%] md:flex items-center justify-center cursor-pointer"
+              className="hidden w-[44px] h-[44px] shadow-lg shadow-[#00000026] rounded-[50%] md:flex items-center justify-center cursor-pointer"
             >
               <Image
                 src="/images/carouselArrow.svg"
@@ -65,40 +67,17 @@ export default function TrendCarousel({ title }: TrendCarouselProps) {
                 },
               }}
             >
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleProduct />
-              </SwiperSlide>
+              {products?.map((item) => {
+                return (
+                  <SwiperSlide key={item._id}>
+                    <SingleProduct product={item} />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
             <div
               onClick={handleNext}
-              className="hidden w-[84px] h-[44px] shadow-lg shadow-[#00000026] rounded-[50%] md:flex items-center justify-center cursor-pointer"
+              className="hidden w-[44px] h-[44px] shadow-lg shadow-[#00000026] rounded-[50%] md:flex items-center justify-center cursor-pointer"
             >
               <Image
                 src="/images/carouselArrow.svg"
