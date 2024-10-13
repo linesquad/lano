@@ -21,9 +21,11 @@ export default function TrendCarousel({ title }: TrendCarouselProps) {
   const handleResize = () => {
     const width = window.innerWidth;
     if (width >= 1024) {
-      setItemsPerPage(6);
+      setItemsPerPage(5);
     } else if (width >= 768) {
       setItemsPerPage(4);
+    } else if (width >= 450) {
+      setItemsPerPage(3);
     } else {
       setItemsPerPage(2);
     }

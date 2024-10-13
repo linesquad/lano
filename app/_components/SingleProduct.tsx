@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function SingleProduct() {
   return (
     <div>
-      <div className="pt-[8px] pl-[8px] relative w-[150px] md:w-[170px] lg:w-[150px] xl:w-[180px]">
+      <div className="pt-[8px] pl-[8px] relative w-[150px] md:w-[170px] lg:w-[200px]">
         <Image
           src="/images/product.png"
           alt="პროდუცტ"
