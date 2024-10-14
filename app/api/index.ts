@@ -35,7 +35,7 @@ export const fetchCategory = async (): Promise<Category[]> => {
 export const fetchProductById = async (id: string) => {
   try {
     const response = await fetch(`http://localhost:8000/product?catId=${id}`, {
-      cache: "default",
+      cache: "no-cache",
     });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
     const dataById = await response.json();

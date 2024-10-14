@@ -1,69 +1,101 @@
 import Image from "next/image";
 import { fetchCategory } from "../api";
-import vector from "../../public/images/vector.svg";
 import dog from "../../public/images/dog.svg";
 import cat from "../../public/images/cat.svg";
 import parrot from "../../public/images/parrot.svg";
 import { Category } from "@/types/types";
+import Link from "next/link";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "../../components/ui/accordion";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const Filter = async () => {
-  const category: Category[] = await fetchCategory();
+  const categories: Category[] = await fetchCategory();
+
+  const animalIcons = [
+    { id: 1, src: dog, alt: "Dog", title: "Dogs" },
+    { id: 2, src: cat, alt: "Cat", title: "Cats" },
+    { id: 3, src: parrot, alt: "Parrot", title: "Birds" },
+  ];
 
   return (
     <>
-      <div className="tiny:hidden smaller:hidden hidden md:flex">
-        <ul className="text-[#000000] text-base font-medium flex gap-5 md:flex-row md:w-full md:justify-between lg:flex lg:flex-col">
-          {category.map((item: Category) => (
-            <li
+    
+      <div className="tiny:hidden smaller:hidden hidden sm:flex">
+        <Accordion
+          type="multiple"
+          className="w-full sm:flex sm:items-center sm:gap-16 sm:justify-center md:block"
+        >
+          {categories.map((item: Category) => (
+            <AccordionItem
               key={item._id}
-              className="flex flex-col items-start md:gap-[86px] lg:gap-0 cursor-pointer"
+              value={item.title}
+              className="border-0"
             >
-              <div className="flex items-center justify-between w-full">
-                <span className="hover:text-[#EE5335]">
-                  {item.title === "Dogs"
-                    ? "ძაღლები"
-                    : item.title === "Cats"
-                    ? "კატები"
-                    : item.title === "Birds"
-                    ? "ჩიტები"
-                    : "სხვა"}
-                </span>
-                <Image
-                  src={vector}
-                  alt="vector svg"
-                  className="cursor-pointer"
-                />
-              </div>
-              <ul className="overflow-hidden pt-2 w-full">
-                {item.subCategory.map((item: Category) => (
-                  <li key={item._id}>
-                    {item.title === "Toys"
-                      ? "სათამაშო"
-                      : item.title === "Accessory"
-                      ? "აქსესუარები"
-                      : item.title === "Self Care"
-                      ? "მოვლის საშუალებები"
-                      : item.title === "Meals"
-                      ? "საკვები"
-                      : "სხვა"}
-                  </li>
-                ))}
-              </ul>
-            </li>
+              <AccordionTrigger className="flex items-center justify-between w-full cursor-pointer border-0">
+                <span className="hover:text-[#EE5335]">{item.title}</span>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 w-full">
+                <ul className="m-0 p-0">
+                  {item.subCategory.map((subItem: Category) => (
+                    <li
+                      key={subItem._id}
+                      className="py-1 cursor-pointer hover:text-[#EE5335]"
+                    >
+                      <Link
+                        href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
+                      >
+                        {subItem.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </ul>
+        </Accordion>
       </div>
 
-      <div className="tiny:flex smaller:flex flex md:hidden">
-        <div>
-          <Image src={dog} alt="dog svg" className="cursor-pointer" />
-        </div>
-        <div>
-          <Image src={cat} alt="cat svg" className="cursor-pointer" />
-        </div>
-        <div>
-          <Image src={parrot} alt="parrot svg" className="cursor-pointer" />
-        </div>
+      <div className="tiny:flex smaller:flex flex sm:hidden gap-4">
+        {animalIcons.map((animal) => (
+          <DropdownMenu key={animal.id}>
+            <DropdownMenuTrigger asChild>
+              <div>
+                <Image src={animal.src} alt={animal.alt} className="cursor-pointer" />
+              </div>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent className="bg-white p-3 rounded-lg shadow-lg">
+              {categories
+                .filter((category) => category.title === animal.title)
+                .map((item) => (
+                  <ul key={item._id}>
+                    {item.subCategory.map((subItem: Category) => (
+                      <DropdownMenuItem
+                        key={subItem._id}
+                        className="cursor-pointer hover:text-[#EE5335] p-2"
+                      >
+                        <Link
+                          href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
+                        >
+                          {subItem.title}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </ul>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ))}
       </div>
     </>
   );

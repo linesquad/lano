@@ -1,11 +1,13 @@
 import React from "react";
-import { fetchProduct } from "../api";
-import SingleItemDisplay from "./SingleItemDisplay";
-
+import { fetchProductById } from "../../api/index";
 import { Product } from "@/types/types";
+import SingleItemDisplay from "../SingleItemDisplay";
 
-const Page = async () => {
-  const products: Product[] = await fetchProduct();
+const Page = async ({ params }: { params: { SubCatId: string[] } }) => {
+  const id = params.SubCatId[2];
+  const products: Product[] = await fetchProductById(id);
+
+
   return (
     <div className="p-5 w-full">
       <div className="grid grid-cols-3 gap-6 tiny:grid-cols-2 smaller:grid-cols-2 md:grid-cols-4">
