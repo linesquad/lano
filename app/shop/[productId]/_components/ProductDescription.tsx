@@ -6,7 +6,7 @@ export default function ProductDescription() {
       <Wrapper>
         <div className="px-[16px] flex flex-col gap-[16px]">
           <h2 className="text-[#000000] font-medium">პროდუქტის აღწერა</h2>
-          <p className="text-[14px] text-[#000000]">
+          <p className="text-[14px] text-[#000000] max-w-[521px]">
             Advance - Puppy Sensitive სუპერ პრემიუმ კლასის მშრალი საკვები
             მგრძნობიარე კუჭ-ნაწლავის მქონე ლეკვებისთვის. საკვები შეიცავს მხოლოდ
             თევზისა და ბოსტნეულის ცილებს რის გამოც იდეალურია ისეთი ლეკვებისთვის

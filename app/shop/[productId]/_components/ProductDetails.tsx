@@ -6,14 +6,14 @@ export default function ProductDetails() {
   return (
     <div className="mt-[16px]">
       <Wrapper>
-        <div className="px-[20px] flex flex-col">
-          <div className="w-full max-w-[522px] h-[335px]">
+        <div className="px-[20px] flex flex-col lg:flex-row lg:justify-between lg:gap-[20px]">
+          <div className="w-full max-w-[522px] h-[335px] lg:h-[396px]">
             <Image
               src="/images/product.png"
               width={330}
               height={335}
               alt="product"
-              className="object-cover"
+              className="object-cover rounded-[7px]"
             />
           </div>
           <ProductsInfo />
