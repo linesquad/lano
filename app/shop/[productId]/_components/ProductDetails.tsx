@@ -7,7 +7,7 @@ export default function ProductDetails() {
     <div className="mt-[16px]">
       <Wrapper>
         <div className="px-[20px] flex flex-col">
-          <div className="w-full max-w-[450px] h-[335px]">
+          <div className="w-full max-w-[522px] h-[335px]">
             <Image
               src="/images/product.png"
               width={330}

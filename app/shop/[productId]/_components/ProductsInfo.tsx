@@ -5,8 +5,12 @@ export default function ProductsInfo() {
   return (
     <div className="mt-[31px]">
       <div className="flex flex-col gap-[16px] pb-[24px] border-b-[1px] border-b-[#00000066]">
-        <h2 className="text-[#000000] font-bold">საქონლის მწვადი</h2>
-        <p className="text-[14px] text-[#000000] font-bold">4,70 ₾</p>
+        <h2 className="text-[#000000] font-bold md:text-[24px]">
+          საქონლის მწვადი
+        </h2>
+        <p className="text-[14px] text-[#000000] font-bold md:text-[20px]">
+          4,70 ₾
+        </p>
       </div>
       <div className="mt-[24px] flex flex-col gap-[16px]">
         <OneProperty title="ბრენდი" value="?" />
