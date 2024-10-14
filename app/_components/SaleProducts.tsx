@@ -6,7 +6,7 @@ export default async function SaleProducts() {
   const saleProducts: ILandingProducts[] = await fetchSaleProducts();
 
   return (
-    <div>
+    <div key={Math.random()} className="p-4">
       <TrendCarousel title="ფასდაკლებული პროდუქტები" products={saleProducts} />
     </div>
   );
