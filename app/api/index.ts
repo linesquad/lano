@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+import { Category, Product } from "@/types/types";
+
 export const fetchPopularProducts = async () => {
   try {
     const response = await fetch("http://localhost:8000/product?popular=true", {
@@ -10,8 +11,8 @@ export const fetchPopularProducts = async () => {
     return data;
   } catch (error) {
     console.error("Failed to fetch products:", error);
-=======
-import { Category, Product } from "@/types/types";
+  }
+};
 
 export const fetchProduct = async (): Promise<Product[]> => {
   try {
@@ -41,12 +42,10 @@ export const fetchCategory = async (): Promise<Category[]> => {
     return category;
   } catch (error) {
     console.error("Failed to fetch products", error);
->>>>>>> shopPageFilter
     return [];
   }
 };
 
-<<<<<<< HEAD
 export const fetchSaleProducts = async () => {
   try {
     const response = await fetch(
@@ -62,7 +61,8 @@ export const fetchSaleProducts = async () => {
   } catch (error) {
     console.error("Failed to fetch products:", error);
     return [];
-=======
+  }
+};
 export const fetchProductById = async (id: string) => {
   try {
     const response = await fetch(`http://localhost:8000/product?catId=${id}`, {
@@ -74,6 +74,5 @@ export const fetchProductById = async (id: string) => {
   } catch (error) {
     console.error("Failed fetch category by id", error);
     return error;
->>>>>>> shopPageFilter
   }
 };
