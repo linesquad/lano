@@ -2,25 +2,33 @@ import Image from "next/image";
 import OneProperty from "./OneProperty";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import { IOneProduct } from "@/types/types";
 
-export default function ProductsInfo() {
+interface ProductsInfoProps {
+  oneProduct: IOneProduct;
+}
+
+export default function ProductsInfo({ oneProduct }: ProductsInfoProps) {
   return (
-    <div className="mt-[31px] flex flex-col lg:w-full">
+    <div className="mt-[91px] lg:mt-[0px] flex flex-col lg:w-full">
       <div className="flex flex-col gap-[16px] pb-[24px] border-b-[1px] border-b-[#00000066]">
         <h2 className="text-[#000000] font-bold md:text-[24px]">
-          საქონლის მწვადი
+          {oneProduct.title}
         </h2>
         <p className="text-[14px] text-[#000000] font-bold md:text-[20px]">
-          4,70 ₾
+          {oneProduct.price.$numberDecimal} ₾
         </p>
       </div>
       <div className="mt-[24px] flex flex-col gap-[16px]">
-        <OneProperty title="ბრენდი" value="?" />
-        <OneProperty title="ჯიში" value="უნივერსალური" />
-        <OneProperty title="ასაკი" value="ლეკვი" />
-        <OneProperty title="არომატი" value="თევზი/ბოსტნეული" />
-        <OneProperty title="წონა" value="12კგ" />
-        <OneProperty title="პროდუქტის კოდი" value="123456789" />
+        <OneProperty title="ბრენდი" value={oneProduct.brand} />
+        <OneProperty title="ჯიში" value={oneProduct.productType} />
+        <OneProperty title="ასაკი" value={oneProduct.mealDetails.age} />
+        <OneProperty title="არომატი" value={oneProduct.mealDetails.aroma} />
+        <OneProperty title="წონა" value={oneProduct.mealDetails.weight} />
+        <OneProperty
+          title="პროდუქტის კოდი"
+          value={oneProduct.mealDetails._id}
+        />
       </div>
 
       <Dialog>
@@ -30,7 +38,7 @@ export default function ProductsInfo() {
             <Image src="/images/paw.svg" alt="paw" width={16} height={16} />
           </div>
         </DialogTrigger>
-        <DialogContent className="w-[300px] md:w-[523px] rounded-[24px] ">
+        <DialogContent className="w-[300px] md:w-[523px] rounded-[24px]">
           <DialogTitle>
             <div className="flex flex-col gap-[40px] mt-[20px] p-[10px] md:p-[20px]">
               <div className="flex items-start gap-[8px]">
