@@ -45,6 +45,6 @@ export const fetchOneProduct = async (id: string) => {
     return data;
   } catch (error) {
     console.error("Failed to fetch products:", error);
-    return [];
+    return null; // aq null an {}
   }
 };
