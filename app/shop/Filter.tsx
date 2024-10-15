@@ -29,11 +29,10 @@ const Filter = async () => {
 
   return (
     <>
-    
       <div className="tiny:hidden smaller:hidden hidden sm:flex">
         <Accordion
           type="multiple"
-          className="w-full sm:flex sm:items-center sm:gap-16 sm:justify-center md:block"
+          className="w-full sm:flex sm:items-center sm:gap-16 sm:justify-start md:block"
         >
           {categories.map((item: Category) => (
             <AccordionItem
@@ -42,14 +41,16 @@ const Filter = async () => {
               className="border-0"
             >
               <AccordionTrigger className="flex items-center justify-between w-full cursor-pointer border-0">
-                <span className="hover:text-[#EE5335]">{item.title}</span>
+                <span className="font-medium text-[#000] hover:text-[#EE5335] transition-all duration-300 ease-in-out">
+                  {item.title}
+                </span>
               </AccordionTrigger>
               <AccordionContent className="pt-2 w-full">
                 <ul className="m-0 p-0">
                   {item.subCategory.map((subItem: Category) => (
                     <li
                       key={subItem._id}
-                      className="py-1 cursor-pointer hover:text-[#EE5335]"
+                      className="py-1 cursor-pointer hover:text-[#EE5335] transition-all duration-300 ease-in-out"
                     >
                       <Link
                         href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
@@ -70,7 +71,11 @@ const Filter = async () => {
           <DropdownMenu key={animal.id}>
             <DropdownMenuTrigger asChild>
               <div>
-                <Image src={animal.src} alt={animal.alt} className="cursor-pointer" />
+                <Image
+                  src={animal.src}
+                  alt={animal.alt}
+                  className="cursor-pointer"
+                />
               </div>
             </DropdownMenuTrigger>
 
@@ -82,7 +87,8 @@ const Filter = async () => {
                     {item.subCategory.map((subItem: Category) => (
                       <DropdownMenuItem
                         key={subItem._id}
-                        className="cursor-pointer hover:text-[#EE5335] p-2"
+                        className="cursor-pointer hover:text-[#EE5335] p-2 transition-all 
+                        duration-300 ease-in-out text-[#000] font-medium"
                       >
                         <Link
                           href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
