@@ -1,5 +1,5 @@
 "use client";
-import SingleProductSkeleton from "./SkeletonLoader.jsx";
+import SingleProductSkeleton from "./SkeletonLoader";
 import Wrapper from "./Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Suspense, useRef, lazy } from "react";

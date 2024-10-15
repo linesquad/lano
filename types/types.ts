@@ -2,9 +2,10 @@
 export interface ILandingProducts {
   _id: string;
   title: string;
-  price: {
-    $numberDecimal: number;
-  };
+  price: number;
+  currentPrice: string;
+
+  dFlag: boolean;
   discount: number;
   image: string;
   score: string | null;

@@ -1,12 +1,15 @@
 import { ILandingProducts } from "@/types/types";
 import Image from "next/image";
 
+import Link from "next/link";
+
 interface SingleProductProps {
   product: ILandingProducts;
 }
 
 export default function SingleProduct({ product }: SingleProductProps) {
   console.log(product, "product");
+
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-300">
@@ -26,11 +29,11 @@ export default function SingleProduct({ product }: SingleProductProps) {
           <div className="p-[10px]">
             <div className="  items-center gap-[8px] group-hover:flex hidden transition duration-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {product.price.$numberDecimal}₾
+                {product.currentPrice}₾
               </p>
               {product.discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
-                  {product.price.$numberDecimal}₾
+                  {product.price}₾
                 </p>
               )}
             </div>
@@ -45,11 +48,11 @@ export default function SingleProduct({ product }: SingleProductProps) {
         <div className="mt-[8px] p-[8px]">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-300">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {product.price.$numberDecimal}₾
+              {product.currentPrice}₾
             </p>
             {product.discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">
-                {product.price.$numberDecimal}₾
+                {product.price}₾
               </p>
             )}
           </div>
@@ -59,11 +62,13 @@ export default function SingleProduct({ product }: SingleProductProps) {
               : product.title}
           </p>
 
-          <div className="hidden group-hover:block mt-[8px] p-[8px] transition duration-300">
-            <button className="w-full  text-black font-bold py-2 rounded-[7px] border border-black transition duration-300">
-              ვრცლად
-            </button>
-          </div>
+          <Link href={`/shop/${product._id}`}>
+            <div className="hidden group-hover:block mt-[8px] p-[8px] transition duration-300">
+              <button className="w-full  text-black font-bold py-2 rounded-[7px] border border-black transition duration-300">
+                ვრცლად
+              </button>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
