@@ -1,9 +1,13 @@
-
-export interface ILandingProducts {
+export interface Product {
+  products: ProductDetails[];
+  page: number;
+  lenBtns: number;
+}
+export interface ProductDetails {
   _id: string;
   title: string;
   price: {
-    $numberDecimal: number;
+    $numberDecimal: string;
   };
   discount: number;
   image: string;
@@ -34,3 +38,23 @@ export interface Category {
   updatedAt: string;
   __v: number;
 }
+
+// export interface ILandingProducts {
+//   _id: string;
+//   title: string;
+//   price: number;
+//   currentPrice: string;
+
+//   dFlag: boolean;
+//   discount: number;
+//   image: string;
+//   score: string | null;
+// }
+// export interface Product {
+//   _id: string;
+//   title: string;
+//   price: number;
+//   currentPrice: string;
+//   image: string;
+//   dFlag: boolean;
+// }

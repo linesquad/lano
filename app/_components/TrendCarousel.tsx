@@ -4,30 +4,30 @@ import Wrapper from "./Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef } from "react";
 import "swiper/css";
-import SingleProduct from "./SingleProduct";
 import Image from "next/image";
 import { Swiper as SwiperCore } from "swiper";
-import { ILandingProducts } from "@/types/types";
+import { ProductDetails } from "@/types/types";
+import SingleProduct from "../_components/SingleProduct";
 
 interface TrendCarouselProps {
   title: string;
-  products: ILandingProducts[];
+  products: { products: ProductDetails[]; page: number; lenBtns: null };
 }
 
 export default function TrendCarousel({ title, products }: TrendCarouselProps) {
-  const swiperRef = useRef<SwiperCore>();
+  const swiperRef = useRef<SwiperCore | null>(null);
 
   const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
+    swiperRef.current?.slidePrev();
   };
 
   const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
+    swiperRef.current?.slideNext();
   };
+
+  const productArray = products.products;
+
+  console.log("Products:", productArray);
 
   return (
     <div>
@@ -54,30 +54,29 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              slidesPerView={Math.min(products.length, 1)}
+              slidesPerView={Math.min(productArray.length, 5)}
               breakpoints={{
                 300: {
-                  slidesPerView: Math.min(products.length, 2),
+                  slidesPerView: Math.min(productArray.length, 2),
                 },
                 450: {
-                  slidesPerView: Math.min(products.length, 3),
+                  slidesPerView: Math.min(productArray.length, 3),
                 },
                 740: {
-                  slidesPerView: Math.min(products.length, 4),
+                  slidesPerView: Math.min(productArray.length, 4),
                 },
                 1024: {
-                  slidesPerView: Math.min(products.length, 5),
+                  slidesPerView: Math.min(productArray.length, 5),
                 },
               }}
             >
-              {products?.map((item) => {
-                return (
-                  <SwiperSlide key={item._id}>
-                    <SingleProduct product={item} />
-                  </SwiperSlide>
-                );
-              })}
+              {productArray.map((item) => (
+                <SwiperSlide key={item._id}>
+                  <SingleProduct product={item} />
+                </SwiperSlide>
+              ))}
             </Swiper>
+
             <div
               onClick={handleNext}
               className="hidden w-[44px] h-[44px] shadow-lg shadow-[#00000026] rounded-[50%] md:flex items-center justify-center cursor-pointer"

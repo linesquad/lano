@@ -1,6 +1,5 @@
 import { ProductDetails } from "@/types/types";
 import Image from "next/image";
-
 import Link from "next/link";
 
 interface SingleProductProps {
@@ -13,7 +12,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-300">
-        <div className="w-full h-[150px] relative rounded-[7px] overflow-hidden border border-transparent  hover:border-black group-hover:border group-hover:border-black">
+        <div className="w-full h-[150px] relative rounded-[7px] overflow-hidden border border-transparent hover:border-black group-hover:border group-hover:border-black">
           <Image
             src={product.image}
             alt="პროდუცტ"
@@ -27,13 +26,13 @@ export default function SingleProduct({ product }: SingleProductProps) {
             </div>
           )}
           <div className="p-[10px]">
-            <div className="  items-center gap-[8px] group-hover:flex hidden transition duration-300">
+            <div className="items-center gap-[8px] group-hover:flex hidden transition duration-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {product.currentPrice}₾ {/* Use $numberDecimal */}
+                {product.currentPrice}₾
               </p>
               {product.discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
-                  {product.price.$numberDecimal}₾ {/* Use $numberDecimal */}
+                  {parseFloat(product.price.$numberDecimal)}₾
                 </p>
               )}
             </div>
@@ -48,11 +47,11 @@ export default function SingleProduct({ product }: SingleProductProps) {
         <div className="mt-[8px] p-[8px]">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-300">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {product.currentPrice}₾ {/* Use $numberDecimal */}
+              {product.currentPrice}₾
             </p>
             {product.discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">
-                {product.price.$numberDecimal}₾ {/* Use $numberDecimal */}
+                {parseFloat(product.price.$numberDecimal)}₾
               </p>
             )}
           </div>
@@ -64,7 +63,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
 
           <Link href={`/shop/${product._id}`}>
             <div className="hidden group-hover:block mt-[8px] p-[8px] transition duration-300">
-              <button className="w-full  text-black py-2 rounded-[7px] border border-black transition duration-300">
+              <button className="w-full text-black py-2 rounded-[7px] border border-black transition duration-300">
                 ვრცლად
               </button>
             </div>

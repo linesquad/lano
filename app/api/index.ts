@@ -2,9 +2,13 @@ import { Category, Product } from "@/types/types";
 
 export const fetchPopularProducts = async () => {
   try {
-    const response = await fetch("http://localhost:8000/product?popular=true", {
-      cache: "default",
-    });
+    const response = await fetch(
+      "http://localhost:8000/product?popular=true&page=1",
+      {
+        cache: "no-cache",
+        // cache: "default",
+      }
+    );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const data = await response.json();
@@ -49,9 +53,10 @@ export const fetchCategory = async (): Promise<Category[]> => {
 export const fetchSaleProducts = async () => {
   try {
     const response = await fetch(
-      "http://localhost:8000/product?discount=true",
+      "http://localhost:8000/product?discount=true&page=1",
       {
-        cache: "default",
+        cache: "no-cache",
+        // cache: "default",
       }
     );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
@@ -83,3 +88,20 @@ export const fetchByCatId = async (
     return null;
   }
 };
+
+// export const fetchOrder = async () => {
+//   try {
+//     const response = await fetch("http://localhost:8000/order", {
+//       cache: "default",
+//     });
+//     if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+//     const data = await response.json();
+//     console.log(data, "order");
+
+//     return data;
+//   } catch (error) {
+//     console.error("Failed to fetch products:", error);
+//     return [];
+//   }
+// };
