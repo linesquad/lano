@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Filter from "./Filter";
+import Filter from "./_components/Filter";
 import Wrapper from "../_components/Wrapper";
 
 interface RootLayoutProps {

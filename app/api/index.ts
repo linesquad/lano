@@ -14,26 +14,26 @@ export const fetchPopularProducts = async () => {
   }
 };
 
-export const fetchProduct = async (): Promise<Product[]> => {
+export const fetchProduct = async (page: number): Promise<Product | null> => {
   try {
-    const response = await fetch("http://localhost:8000/product", {
-      cache: "no-cache",
-    });
-
+    const response = await fetch(
+      `http://localhost:8000/product?products=true&page=${page}`,
+      {
+        cache: "no-cache",
+      }
+    );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
-
-    const data: Product[] = await response.json();
-    console.log(data);
+    const data: Product = await response.json();
     return data;
   } catch (error) {
     console.error("Failed to fetch products:", error);
-    return [];
+    return null;
   }
 };
 
 export const fetchCategory = async (): Promise<Category[]> => {
   try {
-    const response = await fetch("http://localhost:8000/category", {
+    const response = await fetch(`http://localhost:8000/category`, {
       cache: "no-cache",
     });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
@@ -63,16 +63,23 @@ export const fetchSaleProducts = async () => {
     return [];
   }
 };
-export const fetchProductById = async (id: string) => {
+
+export const fetchByCatId = async (
+  id: string,
+  page: number
+): Promise<Product | null> => {
   try {
-    const response = await fetch(`http://localhost:8000/product?catId=${id}`, {
-      cache: "no-cache",
-    });
+    const response = await fetch(
+      `http://localhost:8000/product?catId=${id}&page=${page}`,
+      {
+        cache: "no-cache",
+      }
+    );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
-    const dataById = await response.json();
+    const dataById: Product = await response.json();
     return dataById;
   } catch (error) {
     console.error("Failed fetch category by id", error);
-    return error;
+    return null;
   }
 };
