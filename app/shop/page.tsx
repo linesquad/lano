@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import ProductsDisplay from "./ProductsDisplay";
-import ShopSkeletonLoader from "./ShopSkeletonLoader";
+import ProductsDisplay from "./_components/ProductsDisplay";
+import ShopSkeletonLoader from "./_components/ShopSkeletonLoader";
 
 const page = async () => {
   return (

@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { fetchCategory } from "../api";
-import dog from "../../public/images/dog.svg";
-import cat from "../../public/images/cat.svg";
-import parrot from "../../public/images/parrot.svg";
+import { fetchCategory } from "../../api";
+import dog from "../../../public/images/dog.svg";
+import cat from "../../../public/images/cat.svg";
+import parrot from "../../../public/images/parrot.svg";
 import { Category } from "@/types/types";
 import Link from "next/link";
 import {
@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "../../components/ui/accordion";
+} from "../../../components/ui/accordion";
 import {
   DropdownMenu,
   DropdownMenuTrigger,

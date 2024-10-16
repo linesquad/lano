@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchByCatId } from "../../api/index";
-import SingleItemDisplay from "../SingleItemDisplay";
+import SingleItemDisplay from "../_components/SingleItemDisplay";
 
 const Page = async ({ params }: { params: { SubCatId: string[] } }) => {
   const id = params.SubCatId[2];
