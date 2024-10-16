@@ -61,7 +61,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
             : product.title}
         </p>
 
-        <Link href={`/shop/${product._id}`}>
+        <Link href={`/product/${product._id}`}>
           <div className="hidden group-hover:block mt-[8px] p-[8px] transition duration-300">
             <button className="w-full  text-black py-2 rounded-[7px] border border-black transition duration-300">
               ვრცლად
