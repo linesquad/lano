@@ -83,24 +83,6 @@ export const fetchProductById = async (id: string) => {
   }
 };
 
-<<<<<<< HEAD
-// export const fetchOrder = async () => {
-//   try {
-//     const response = await fetch("http://localhost:8000/order", {
-//       cache: "default",
-//     });
-//     if (!response.ok) throw new Error(`Error: ${response.status}`);
-
-//     const data = await response.json();
-//     console.log(data, "order");
-
-//     return data;
-//   } catch (error) {
-//     console.error("Failed to fetch products:", error);
-//     return [];
-//   }
-// };
-=======
 export const fetchOneProduct = async (id: string) => {
   try {
     const response = await fetch(
@@ -118,4 +100,3 @@ export const fetchOneProduct = async (id: string) => {
     return [];
   }
 };
->>>>>>> updateSinglePage
