@@ -29,7 +29,7 @@ const Filter = async () => {
 
   return (
     <>
-      <div className="tiny:hidden smaller:hidden hidden sm:flex">
+      <div className="tiny:hidden smaller:hidden hidden md:flex">
         <Accordion
           type="multiple"
           className="w-full sm:flex sm:items-center sm:gap-16 sm:justify-start md:block"
@@ -66,7 +66,7 @@ const Filter = async () => {
         </Accordion>
       </div>
 
-      <div className="tiny:flex smaller:flex flex sm:hidden gap-4">
+      <div className="tiny:flex smaller:flex flex md:hidden gap-4">
         {animalIcons.map((animal) => (
           <DropdownMenu key={animal.id}>
             <DropdownMenuTrigger asChild>

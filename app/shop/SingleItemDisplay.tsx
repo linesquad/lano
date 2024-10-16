@@ -1,4 +1,4 @@
-import { ProductDetails } from "@/types/types"; // Adjust import if necessary
+import { ProductDetails } from "@/types/types";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -33,12 +33,12 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
               {discountedPrice.toFixed(2)}
             </p>
             <p className="text-[#00000066] line-through text-sm font-medium">
-              {price.$numberDecimal} 
+              {price.$numberDecimal}
             </p>
           </>
         ) : (
           <p className="text-black text-base font-semibold">
-            {price.$numberDecimal} 
+            {price.$numberDecimal}
           </p>
         )}
       </div>
