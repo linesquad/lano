@@ -1,5 +1,6 @@
 import { ILandingProducts } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
 
 interface SingleProductProps {
   product: ILandingProducts;
@@ -7,7 +8,7 @@ interface SingleProductProps {
 
 export default function SingleProduct({ product }: SingleProductProps) {
   return (
-    <div>
+    <Link href={`/${product.title}/${product._id}`}>
       <div className="pt-[8px] pl-[8px] relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px]">
         <div className="w-[150px] h-[150px] object-cover rounded-[7px]">
           <Image
@@ -39,6 +40,6 @@ export default function SingleProduct({ product }: SingleProductProps) {
           ? product.title.slice(0, 10) + "..."
           : product.title}
       </p>
-    </div>
+    </Link>
   );
 }

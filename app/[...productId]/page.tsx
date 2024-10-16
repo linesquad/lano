@@ -6,12 +6,15 @@ import { IOneProduct } from "@/types/types";
 
 interface PageProps {
   params: {
-    productId: string;
+    productId: string[];
   };
 }
 
 const page = async ({ params }: PageProps) => {
-  const oneProduct: IOneProduct = await fetchOneProduct(params.productId);
+  console.log(params);
+  const oneProduct: IOneProduct = await fetchOneProduct(
+    params.productId[params.productId.length - 1]
+  );
 
   return (
     <div>
