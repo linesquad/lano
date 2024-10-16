@@ -1,14 +1,13 @@
 "use client";
-import SingleProductSkeleton from "./SkeletonLoader";
+
 import Wrapper from "./Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Suspense, useRef } from "react";
+import { useRef } from "react";
 import "swiper/css";
 import Image from "next/image";
 import { Swiper as SwiperCore } from "swiper";
 import { ILandingProducts } from "@/types/types";
 import SingleProduct from "../_components/SingleProduct";
-// const SingleProduct = lazy(() => import("./SingleProduct"));
 
 interface TrendCarouselProps {
   title: string;
@@ -71,13 +70,11 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
                 },
               }}
             >
-              <Suspense fallback={<SingleProductSkeleton />}>
-                {products?.map((item) => (
-                  <SwiperSlide key={item._id}>
-                    <SingleProduct product={item} />
-                  </SwiperSlide>
-                ))}
-              </Suspense>
+              {products?.map((item) => (
+                <SwiperSlide key={item._id}>
+                  <SingleProduct product={item} />
+                </SwiperSlide>
+              ))}
             </Swiper>
 
             <div

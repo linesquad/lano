@@ -1,4 +1,4 @@
-export default function SingleProductSkeleton() {
+export default function SkeletonLoader() {
   return (
     <div>
       <div className="pt-[8px] pl-[8px] relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px]">
