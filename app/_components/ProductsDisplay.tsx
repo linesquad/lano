@@ -11,6 +11,8 @@ async function fetchProducts() {
 
 export default async function ProductsDisplay() {
   const { saleProducts, popularProducts } = await fetchProducts();
+  console.log(saleProducts, "saleProducts");
+  console.log(popularProducts, "popularProducts ");
 
   return (
     <div>

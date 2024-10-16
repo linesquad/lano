@@ -1,7 +1,8 @@
 export default function SkeletonLoader() {
+  const quantity = 5;
   return (
     <div className="flex gap-[27px] md:gap-[6px] lg:gap-[20px] overflow-hidden">
-      {Array.from({ length: 5 }).map((_, index) => (
+      {Array.from({ length: quantity || 5 }).map((_, index) => (
         <div
           key={index}
           className="relative min-w-[150px] flex-wrap w-[150px] md:min-w-[145px] md:w-[145px] lg:min-w-[170px] lg:w-[200px] transition duration-300"

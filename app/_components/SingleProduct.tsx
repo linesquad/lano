@@ -1,10 +1,10 @@
-import { ILandingProducts } from "@/types/types";
+import { ProductDetails } from "@/types/types";
 import Image from "next/image";
 
 import Link from "next/link";
 
 interface SingleProductProps {
-  product: ILandingProducts;
+  product: ProductDetails;
 }
 
 export default function SingleProduct({ product }: SingleProductProps) {
@@ -29,11 +29,11 @@ export default function SingleProduct({ product }: SingleProductProps) {
           <div className="p-[10px]">
             <div className="  items-center gap-[8px] group-hover:flex hidden transition duration-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {product.currentPrice}₾
+                {product.currentPrice}₾ {/* Use $numberDecimal */}
               </p>
               {product.discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
-                  {product.price}₾
+                  {product.price.$numberDecimal}₾ {/* Use $numberDecimal */}
                 </p>
               )}
             </div>
@@ -48,11 +48,11 @@ export default function SingleProduct({ product }: SingleProductProps) {
         <div className="mt-[8px] p-[8px]">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-300">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {product.currentPrice}₾
+              {product.currentPrice}₾ {/* Use $numberDecimal */}
             </p>
             {product.discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">
-                {product.price}₾
+                {product.price.$numberDecimal}₾ {/* Use $numberDecimal */}
               </p>
             )}
           </div>

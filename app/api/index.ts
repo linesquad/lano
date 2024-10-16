@@ -2,10 +2,13 @@ import { Category, Product } from "@/types/types";
 
 export const fetchPopularProducts = async () => {
   try {
-    const response = await fetch("http://localhost:8000/product?popular=true", {
-      cache: "no-cache",
-      // cache: "default",
-    });
+    const response = await fetch(
+      "http://localhost:8000/product?popular=true&page=1",
+      {
+        cache: "no-cache",
+        // cache: "default",
+      }
+    );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
     const data = await response.json();
@@ -50,7 +53,7 @@ export const fetchCategory = async (): Promise<Category[]> => {
 export const fetchSaleProducts = async () => {
   try {
     const response = await fetch(
-      "http://localhost:8000/product?discount=true",
+      "http://localhost:8000/product?discount=true&page=1",
       {
         cache: "no-cache",
         // cache: "default",

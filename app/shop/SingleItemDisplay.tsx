@@ -1,45 +1,75 @@
-import { Product } from "@/types/types";
+import { ProductDetails } from "@/types/types";
 import Image from "next/image";
-import { FC } from "react";
+import Link from "next/link";
 
-const SingleItemDisplay: FC<{ item: Product }> = ({ item }) => {
-  // const oldPrice = Number(price.split(" ").at(0)) + discount;
-  const { image, title, currentPrice, price, dFlag } = item;
+interface SingleProductProps {
+  product: ProductDetails;
+}
+
+export default function SingleProduct({ product }: SingleProductProps) {
+  console.log(product, "product");
+
   return (
-    <>
-      <div className="relative">
-        <Image
-          src={image}
-          alt={title}
-          width={200}
-          height={200}
-          className="max-h-[157px]"
-        />
-        {dFlag && (
-          <div className="absolute top-2 left-2 px-[13px] py-[6.5px] rounded-sm bg-[#EE5335] ">
-            <span className="text-white text-sm font-semibold ">sale</span>
+    <div className="flex flex-col items-center h-[230px]">
+      <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-300">
+        <div className="w-full h-[150px] relative rounded-[7px] overflow-hidden border border-transparent hover:border-black group-hover:border group-hover:border-black">
+          <Image
+            src={product.image}
+            alt="პროდუცტ"
+            priority
+            fill
+            className="object-cover group-hover:hidden rounded-[7px] transition duration-300"
+          />
+          {product.discount !== 0 && (
+            <div className="w-[60px] h-[32px] bg-[#EE5335] group-hover:hidden flex justify-center items-center rounded-[4px] absolute top-[8px] left-[8px]">
+              <span className="text-[#fff] font-semibold">SALE</span>
+            </div>
+          )}
+          <div className="p-[10px]">
+            <div className="items-center gap-[8px] group-hover:flex hidden transition duration-300">
+              <p className="text-[16px] text-[#FF3B30] font-bold">
+                {product.currentPrice}₾
+              </p>
+              {product.discount !== 0 && (
+                <p className="text-[14px] text-[#00000066] font-medium line-through">
+                  {parseFloat(product.price.$numberDecimal)}₾
+                </p>
+              )}
+            </div>
+            <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:block transition duration-300">
+              {product.title.length > 10
+                ? product.title.slice(0, 10) + "..."
+                : product.title}
+            </p>
           </div>
-        )}
-      </div>
-      <div className="flex gap-2 justify-start items-center">
-        <p
-          className={`${
-            !dFlag ? "text-black" : "text-[#FF3B30]"
-          } text-base font-semibold`}
-        >
-          {price}
-        </p>
-        {dFlag && (
-          <p className="text-[#00000066] line-through text-sm font-medium">
-            {currentPrice}
-          </p>
-        )}
-      </div>
-      <div>
-        <p className="text-sm font-medium">{title}</p>
-      </div>
-    </>
-  );
-};
+        </div>
 
-export default SingleItemDisplay;
+        <div className="mt-[8px] p-[8px]">
+          <div className="flex items-center gap-[8px] group-hover:hidden transition duration-300">
+            <p className="text-[16px] text-[#FF3B30] font-bold">
+              {product.currentPrice}₾
+            </p>
+            {product.discount !== 0 && (
+              <p className="text-[14px] text-[#00000066] font-medium line-through">
+                {parseFloat(product.price.$numberDecimal)}₾
+              </p>
+            )}
+          </div>
+          <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:hidden transition duration-300">
+            {product.title.length > 10
+              ? product.title.slice(0, 10) + "..."
+              : product.title}
+          </p>
+
+          <Link href={`/shop/${product._id}`}>
+            <div className="hidden group-hover:block mt-[8px] p-[8px] transition duration-300">
+              <button className="w-full text-black py-2 rounded-[7px] border border-black transition duration-300">
+                ვრცლად
+              </button>
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
