@@ -1,9 +1,14 @@
 import React from "react";
 import { fetchProduct } from "../../api";
 import SingleItemDisplay from "./SingleItemDisplay";
+import PaginationControls from "./PaginationControls";
 
-const ProductsDisplay = async () => {
-  const response = await fetchProduct(1);
+const ProductsDisplay = async ({
+  currentPage,
+}: {
+  currentPage: string | number | string[];
+}) => {
+  const response = await fetchProduct(Number(currentPage));
   if (!response || !response.products || response.products.length === 0) {
     return (
       <h1 className="w-[70%] font-medium text-[#000] text-center">
@@ -11,7 +16,7 @@ const ProductsDisplay = async () => {
       </h1>
     );
   }
-  const { products, lenBtns, page } = response;
+  const { products, lenBtns } = response;
   return (
     <div className="p-5 w-full">
       <div className="grid grid-cols-3 gap-6 tiny:grid-cols-2 smaller:grid-cols-2 md:grid-cols-4">
@@ -21,6 +26,8 @@ const ProductsDisplay = async () => {
           </div>
         ))}
       </div>
+
+      <PaginationControls btnCount={lenBtns} />
     </div>
   );
 };
