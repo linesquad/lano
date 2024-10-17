@@ -9,6 +9,7 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		
   		screens: {
   			tiny: {
   				max: '300px'
