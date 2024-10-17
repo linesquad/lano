@@ -41,7 +41,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
             </p>
           </div>
         </div>
-        <div className="mt-[8px] p-[8px]">
+        <div className="mt-[8px] ">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
             <p className="text-[16px] text-[#FF3B30] font-bold">
               {product.currentPrice}₾
@@ -59,7 +59,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
           </p>
 
           <Link href={`/product/${product._id}`} className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100">
-            <div className="hidden group-hover:block mt-[8px] p-[8px] ">
+            <div className="hidden group-hover:block mt-[8px]  ">
               <button className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-gray-700 hover:text-white transition duration-500 ease-in-out">
                 ვრცლად
               </button>

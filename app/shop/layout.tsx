@@ -17,7 +17,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <span>Shop</span>
         </div>
         <div className="flex flex-col md:flex-row items-start justify-center">
-          <div className="md:w-[30%] w-full p-5 tiny:p-0">
+          <div className="md:w-[25%] w-full p-5 tiny:p-0">
             <Filter />
           </div>
           {children}

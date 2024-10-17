@@ -44,7 +44,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               {currentIndex > 0 && (
                 <div
                   onClick={handlePrev}
-                  className="absolute bottom-0 left-0 w-[44px] h-[44px] bg-white shadow-lg
+                  className="hidden absolute bottom-0 left-0 w-[44px] h-[44px] bg-white shadow-lg
                     shadow-[#00000026] rounded-full md:flex items-center justify-center cursor-pointer
                     z-50 hover:bg-red-400 transition-all duration-500 ease-in-out"
                 >
@@ -92,7 +92,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               {showRightArrow && (
                 <div
                   onClick={handleNext}
-                  className="absolute bottom-0 right-0 w-[44px] h-[44px] bg-white shadow-lg
+                  className="hidden absolute bottom-0 right-0 w-[44px] h-[44px] bg-white shadow-lg
                     shadow-[#00000026] rounded-full md:flex items-center justify-center cursor-pointer
                     z-50 hover:bg-red-400 transition-all duration-500 ease-in-out"
                 >
