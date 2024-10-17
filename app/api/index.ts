@@ -94,7 +94,7 @@ export const fetchOneProduct = async (id: string) => {
     const response = await fetch(
       `http://localhost:8000/product?productId=${id}`,
       {
-        cache: "default",
+        cache: "no-cache",
       }
     );
     if (!response.ok) throw new Error(`Error: ${response.status}`);

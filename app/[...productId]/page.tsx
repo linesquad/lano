@@ -11,14 +11,13 @@ interface PageProps {
 }
 
 const page = async ({ params }: PageProps) => {
-  console.log(params);
   const oneProduct: IOneProduct = await fetchOneProduct(
     params.productId[params.productId.length - 1]
   );
 
   return (
     <div>
-      <ProductHeader />
+      <ProductHeader oneProduct={oneProduct} />
       <ProductDetails oneProduct={oneProduct} />
       <ProductDescription oneProduct={oneProduct} />
     </div>
