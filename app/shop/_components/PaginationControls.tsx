@@ -5,19 +5,43 @@ import { useRouter, useSearchParams } from "next/navigation";
 const PaginationControls = ({ btnCount }: { btnCount: number }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentPage = searchParams.get("page") ?? "1";
+  const currentPage = Number(searchParams.get("page")) || 1;
 
-  const paginationArray = Array.from(
-    { length: btnCount },
-    (_, index) => index + 1
-  );
+  const paginationItems = () => {
+    const items = [];
+    const totalPages = btnCount;
+
+    for (let i = 1; i <= Math.min(3, totalPages); i++) {
+      items.push(i);
+    }
+    if (currentPage > 4) {
+      items.push("...");
+    }
+    for (
+      let i = Math.max(4, currentPage - 1);
+      i <= Math.min(totalPages - 1, currentPage + 1);
+      i++
+    ) {
+      items.push(i);
+    }
+
+    if (currentPage < totalPages - 3) {
+      items.push("...");
+    }
+    if (totalPages > 1) {
+      items.push(totalPages);
+    }
+    return items;
+  };
+
+  const items = paginationItems();
 
   return (
-    <div className=" flex justify-center gap-2 pt-[80px]">
+    <div className="flex justify-center gap-2 pt-[80px]">
       <button
-        disabled={currentPage === "1"}
-        className="  text-white p-1 cursor-pointer"
-        onClick={() => router.push(`shop/?page=${Number(currentPage) - 1}`)}
+        disabled={currentPage === 1}
+        className="text-white p-1"
+        onClick={() => router.push(`shop/?page=${currentPage - 1}`)}
       >
         <Image
           src="/images/noun-arrow-2335663 2.svg"
@@ -27,44 +51,29 @@ const PaginationControls = ({ btnCount }: { btnCount: number }) => {
           className="rotate-180"
         />
       </button>
-      {paginationArray.map((count, index) => {
-        const isCurrentPage = +currentPage === count;
-        const isNearLastPages = count > paginationArray.length - 3;
-        const showEllipsis =
-          (index === 4 && count < paginationArray.length - 2) ||
-          (index === 3 && count < paginationArray.length - 1);
 
-        if (
-          count === 1 ||
-          count === 2 ||
-          count <= +currentPage + 1 ||
-          isNearLastPages
-        ) {
-          return (
-            <button
-              className={`${
-                isCurrentPage &&
-                "bg-[#EE5335] text-[white] w-[32px] h-[32px] rounded-[2px]"
-              } text-black p-1 text-[14px] font-[600] rounded-full`}
-              key={count}
-              onClick={() => router.push(`shop/?page=${count}`)}
-            >
-              {count}
-            </button>
-          );
-        }
-
-        if (showEllipsis) {
-          return <span key={`ellipsis-${index}`}>...</span>;
-        }
-
-        return null;
-      })}
+      {items.map((item, index) =>
+        typeof item === "number" ? (
+          <button
+            key={item}
+            className={`${
+              currentPage === item
+                ? "bg-[#EE5335] text-white w-[32px] h-[32px] rounded-[2px]"
+                : "text-black"
+            } p-1 text-[14px] font-[600] cursor-pointer rounded-full`}
+            onClick={() => router.push(`shop/?page=${item}`)}
+          >
+            {item}
+          </button>
+        ) : (
+          <span key={`ellipsis-${index}`}>...</span>
+        )
+      )}
 
       <button
-        disabled={Number(currentPage) === btnCount}
-        className=" text-white p-1 cursor-pointer"
-        onClick={() => router.push(`shop/?page=${Number(currentPage) + 1}`)}
+        disabled={currentPage === btnCount}
+        className="text-white p-1"
+        onClick={() => router.push(`shop/?page=${currentPage + 1}`)}
       >
         <Image
           src="/images/noun-arrow-2335663 2.svg"
