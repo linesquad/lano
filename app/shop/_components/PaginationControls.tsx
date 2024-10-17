@@ -10,27 +10,29 @@ const PaginationControls = ({ btnCount }: { btnCount: number }) => {
   const paginationItems = () => {
     const items = [];
     const totalPages = btnCount;
+    const currentPageNumber = Number(currentPage);
 
-    for (let i = 1; i <= Math.min(3, totalPages); i++) {
-      items.push(i);
-    }
-    if (currentPage > 4) {
+    if (totalPages > 0) items.push(1);
+
+    if (currentPageNumber > 4) {
       items.push("...");
     }
-    for (
-      let i = Math.max(4, currentPage - 1);
-      i <= Math.min(totalPages - 1, currentPage + 1);
-      i++
-    ) {
-      items.push(i);
+
+    const start = Math.max(2, currentPageNumber - 1);
+    const end = Math.min(totalPages - 1, currentPageNumber + 1);
+
+    for (let i = start; i <= end; i++) {
+      if (i !== 1 && i !== totalPages) {
+        items.push(i);
+      }
     }
 
-    if (currentPage < totalPages - 3) {
+    if (currentPageNumber < totalPages - 3) {
       items.push("...");
     }
-    if (totalPages > 1) {
-      items.push(totalPages);
-    }
+
+    if (totalPages > 1) items.push(totalPages);
+
     return items;
   };
 
