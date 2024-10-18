@@ -76,7 +76,7 @@ export default function ProductsInfo({ oneProduct }: ProductsInfoProps) {
                   </p>
                   <div className="mt-[16px] flex flex-col gap-[8px]">
                     <p className="text-[12px] lg:text-[16px] text-[#000]">
-                      +995 599 200 XXX
+                      +995 599 200 200
                     </p>
                   </div>
                 </div>
