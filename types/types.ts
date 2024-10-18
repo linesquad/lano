@@ -21,6 +21,7 @@ export interface Product {
 export interface ProductDetails {
   _id: string;
   title: string;
+  productType: string;
   price: {
     $numberDecimal: string;
   };

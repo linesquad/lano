@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FC } from "react";
 
 const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
-  const { image, title, price, discount } = item;
+  const { image, title, price, discount, productType } = item;
 
   const discountAmount = discount
     ? (parseFloat(price.$numberDecimal) * discount) / 100
@@ -12,7 +12,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
   const discountedPrice = parseFloat(price.$numberDecimal) - discountAmount;
 
   return (
- <div className="flex flex-col items-center h-[230px]">
+    <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[180px] lg:w-[180px] transition duration-500">
         <div className="w-full h-[150px] relative rounded-[7px] overflow-hidden border border-transparent hover:border-black group-hover:border group-hover:border-black transition duration-500">
           <Image
@@ -39,9 +39,20 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
               )}
             </div>
             <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              {title.length > 10
-                ? title.slice(0, 10) + "..."
-                : title}
+              {title.length > 10 ? title.slice(0, 10) + "..." : title}
+            </p>
+            <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              მინიმალური
+            </p>
+            {productType == "meal" ? (
+              <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+                შეკვეთა: 5კგ
+              </p>
+            ) : (
+              ""
+            )}
+            <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              599 200 XXX
             </p>
           </div>
         </div>
@@ -57,15 +68,18 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
             )}
           </div>
           <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:hidden transition duration-500">
-            {title.length > 10
-              ? title.slice(0, 10) + "..."
-              : title}
+            {title.length > 10 ? title.slice(0, 10) + "..." : title}
           </p>
 
-          <Link href={`/product/${item._id}`} className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100 w-full">
+          <Link
+            href={`/product/${item._id}`}
+            className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100 w-full"
+          >
             <div className="hidden group-hover:block mt-[8px] ">
-              <button className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-gray-700
-               hover:text-white transition duration-500 ease-in-out">
+              <button
+                className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-[#514747]
+               hover:text-white transition duration-500 ease-in-out"
+              >
                 ვრცლად
               </button>
             </div>

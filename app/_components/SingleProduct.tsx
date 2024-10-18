@@ -26,7 +26,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
           <div className="p-[10px]">
             <div className="items-center gap-[8px] group-hover:flex hidden transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {product.currentPrice}₾
+                {product.price.$numberDecimal}₾
               </p>
               {product.discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
@@ -39,12 +39,25 @@ export default function SingleProduct({ product }: SingleProductProps) {
                 ? product.title.slice(0, 10) + "..."
                 : product.title}
             </p>
+            <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              მინიმალური
+            </p>
+            {product.productType === "meal" ? (
+              <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+                შეკვეთა: 5კგ
+              </p>
+            ) : (
+              ""
+            )}
+            <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              599 200 XXX
+            </p>
           </div>
         </div>
         <div className="mt-[8px] ">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {product.currentPrice}₾
+              {product.price.$numberDecimal}₾
             </p>
             {product.discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">
@@ -57,10 +70,12 @@ export default function SingleProduct({ product }: SingleProductProps) {
               ? product.title.slice(0, 10) + "..."
               : product.title}
           </p>
-
-          <Link href={`/product/${product._id}`} className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100">
+          <Link
+            href={`/product/${product._id}`}
+            className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100"
+          >
             <div className="hidden group-hover:block mt-[8px]  ">
-              <button className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-gray-700 hover:text-white transition duration-500 ease-in-out">
+              <button className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-[#514747] hover:text-white transition duration-500 ease-in-out">
                 ვრცლად
               </button>
             </div>

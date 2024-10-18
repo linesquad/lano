@@ -46,7 +46,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
                   onClick={handlePrev}
                   className="hidden absolute bottom-0 left-0 w-[44px] h-[44px] bg-white shadow-lg
                     shadow-[#00000026] rounded-full md:flex items-center justify-center cursor-pointer
-                    z-50 hover:bg-red-400 transition-all duration-500 ease-in-out"
+                    z-50 hover:bg-[#EE533599] transition-all duration-500 ease-in-out"
                 >
                   <Image
                     src="/images/carouselArrow.svg"
@@ -94,7 +94,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
                   onClick={handleNext}
                   className="hidden absolute bottom-0 right-0 w-[44px] h-[44px] bg-white shadow-lg
                     shadow-[#00000026] rounded-full md:flex items-center justify-center cursor-pointer
-                    z-50 hover:bg-red-400 transition-all duration-500 ease-in-out"
+                    z-50 hover:bg-[#EE533599] transition-all duration-500 ease-in-out"
                 >
                   <Image
                     src="/images/carouselArrow.svg"
