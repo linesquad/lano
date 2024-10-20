@@ -32,11 +32,9 @@ export default function ProductsInfo({ oneProduct }: ProductsInfoProps) {
       </div>
 
       <Dialog>
-        <DialogTrigger>
-          <div className="w-[160px] h-[40px] mt-[20px] rounded-[7px] bg-[#EE5335] flex items-center justify-center gap-[10px] lg:self-end">
-            <p className="text-[14px] text-[#fff] font-semibold">შეძენა</p>
-            <Image src="/images/paw.svg" alt="paw" width={16} height={16} />
-          </div>
+        <DialogTrigger className="w-[160px] h-[40px] mt-[20px] rounded-[7px] bg-[#EE5335] flex items-center justify-center gap-[10px] lg:self-end">
+          <p className="text-[14px] text-[#fff] font-semibold">შეძენა</p>
+          <Image src="/images/paw.svg" alt="paw" width={16} height={16} />
         </DialogTrigger>
         <DialogContent className="w-[300px] md:w-[523px] rounded-[24px]">
           <DialogTitle>
@@ -78,7 +76,7 @@ export default function ProductsInfo({ oneProduct }: ProductsInfoProps) {
                   </p>
                   <div className="mt-[16px] flex flex-col gap-[8px]">
                     <p className="text-[12px] lg:text-[16px] text-[#000]">
-                      +995 599 200 XXX
+                      +995 599 200 200
                     </p>
                   </div>
                 </div>

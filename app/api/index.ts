@@ -94,7 +94,7 @@ export const fetchOneProduct = async (id: string) => {
     const response = await fetch(
       `http://localhost:8000/product?productId=${id}`,
       {
-        cache: "default",
+        cache: "no-cache",
       }
     );
     if (!response.ok) throw new Error(`Error: ${response.status}`);
@@ -103,6 +103,25 @@ export const fetchOneProduct = async (id: string) => {
     return data;
   } catch (error) {
     console.error("Failed to fetch products:", error);
+    return [];
+  }
+};
+
+export const makeOrder = async (productId: string) => {
+  try {
+    const response = await fetch("/http://localhost:8000/order", {
+      method: "POST",
+      body: JSON.stringify({ productId }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to make an order");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to make order:", error);
     return [];
   }
 };

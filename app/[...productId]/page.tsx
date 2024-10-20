@@ -18,7 +18,7 @@ const page = async ({ params }: PageProps) => {
 
   return (
     <div>
-      <ProductHeader />
+      <ProductHeader oneProduct={oneProduct} />
       <ProductDetails oneProduct={oneProduct} />
       <ProductDescription oneProduct={oneProduct} />
     </div>
