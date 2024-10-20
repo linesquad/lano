@@ -11,7 +11,7 @@ import SingleProduct from "../_components/SingleProduct";
 
 interface TrendCarouselProps {
   title: string;
-  products: { products: ProductDetails[]; page: number; lenBtns: null };
+  products: ProductDetails[];
 }
 
 export default function TrendCarousel({ title, products }: TrendCarouselProps) {
@@ -26,11 +26,9 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const handleNext = () => {
     swiperRef.current?.slideNext();
   };
-
-  const productArray = products.products;
-
+  console.log(products.length);
   const showRightArrow =
-    currentIndex < productArray.length - Math.min(productArray.length, 5);
+    currentIndex < products.length - Math.min(products.length, 5);
 
   return (
     <div>
@@ -65,23 +63,23 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               onSlideChange={(swiper) => {
                 setCurrentIndex(swiper.activeIndex);
               }}
-              slidesPerView={Math.min(productArray.length, 5)}
+              slidesPerView={Math.min(products.length, 5)}
               breakpoints={{
                 300: {
-                  slidesPerView: Math.min(productArray.length, 2),
+                  slidesPerView: Math.min(products.length, 2),
                 },
                 450: {
-                  slidesPerView: Math.min(productArray.length, 3),
+                  slidesPerView: Math.min(products.length, 3),
                 },
                 740: {
-                  slidesPerView: Math.min(productArray.length, 4),
+                  slidesPerView: Math.min(products.length, 4),
                 },
                 1024: {
-                  slidesPerView: Math.min(productArray.length, 5),
+                  slidesPerView: Math.min(products.length, 5),
                 },
               }}
             >
-              {productArray.map((item) => (
+              {products.map((item) => (
                 <SwiperSlide key={item._id}>
                   <SingleProduct product={item} />
                 </SwiperSlide>
