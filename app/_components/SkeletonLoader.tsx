@@ -17,8 +17,6 @@ export default function SkeletonLoader() {
           >
             <div className="w-full h-[150px] md:h-[160px] lg:h-[180px] bg-gray-300 animate-pulse rounded-[7px]"></div>
 
-            <div className="w-[60px] h-[32px] bg-gray-300 animate-pulse rounded-[4px] absolute top-2 left-2"></div>
-
             <div className="p-2">
               <div className="flex items-center gap-2 mt-2">
                 <div className="w-[50px] h-[20px] bg-gray-300 animate-pulse rounded"></div>
