@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FC } from "react";
 
 const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
-  const { image, title, price, discount, productType } = item;
+  const { image, title, price, discount, productType, mealDetails } = item;
 
   const discountAmount = discount
     ? (parseFloat(price.$numberDecimal) * discount) / 100
@@ -46,13 +46,13 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
             </p>
             {productType == "meal" ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: 5კგ
+                შეკვეთა: {mealDetails.weight}
               </p>
             ) : (
               ""
             )}
             <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              599 200 XXX
+              599 200 200
             </p>
           </div>
         </div>

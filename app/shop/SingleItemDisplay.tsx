@@ -7,8 +7,6 @@ interface SingleProductProps {
 }
 
 export default function SingleProduct({ product }: SingleProductProps) {
-  console.log(product, "product");
-
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-300">

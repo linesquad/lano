@@ -9,6 +9,9 @@ export interface ProductDetails {
   price: {
     $numberDecimal: string;
   };
+  mealDetails: {
+    weight: string;
+  };
   discount: number;
   image: string;
   score: string | null;
@@ -24,6 +27,9 @@ export interface ProductDetails {
   productType: string;
   price: {
     $numberDecimal: string;
+  };
+  mealDetails: {
+    weight: string;
   };
   currentPrice: string;
   image: string;

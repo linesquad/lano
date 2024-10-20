@@ -44,13 +44,13 @@ export default function SingleProduct({ product }: SingleProductProps) {
             </p>
             {product.productType === "meal" ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: 5კგ
+                შეკვეთა: {product.mealDetails.weight}
               </p>
             ) : (
               ""
             )}
             <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              599 200 XXX
+              599 200 200
             </p>
           </div>
         </div>
