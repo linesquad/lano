@@ -89,19 +89,20 @@ export const fetchByCatId = async (
   }
 };
 
-// export const fetchOrder = async () => {
-//   try {
-//     const response = await fetch("http://localhost:8000/order", {
-//       cache: "default",
-//     });
-//     if (!response.ok) throw new Error(`Error: ${response.status}`);
+export const fetchOneProduct = async (id: string) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/product?productId=${id}`,
+      {
+        cache: "default",
+      }
+    );
+    if (!response.ok) throw new Error(`Error: ${response.status}`);
 
-//     const data = await response.json();
-//     console.log(data, "order");
-
-//     return data;
-//   } catch (error) {
-//     console.error("Failed to fetch products:", error);
-//     return [];
-//   }
-// };
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
+  }
+};

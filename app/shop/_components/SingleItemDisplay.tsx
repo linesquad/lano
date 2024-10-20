@@ -1,9 +1,10 @@
 import { ProductDetails } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 
 const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
-  const { image, title, price, discount } = item;
+  const { image, title, price, discount, productType } = item;
 
   const discountAmount = discount
     ? (parseFloat(price.$numberDecimal) * discount) / 100
@@ -11,41 +12,81 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
   const discountedPrice = parseFloat(price.$numberDecimal) - discountAmount;
 
   return (
-    <>
-      <div className="relative">
-        <Image
-          src={image}
-          alt={title}
-          width={200}
-          height={200}
-          className="max-h-[157px]"
-        />
-        {discount !== 0 && (
-          <div className="absolute top-2 left-2 px-[13px] py-[6.5px] rounded-sm bg-[#EE5335]">
-            <span className="text-white text-sm font-semibold">Sale</span>
+    <div className="flex flex-col items-center h-[230px]">
+      <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[180px] lg:w-[180px] transition duration-500">
+        <div className="w-full h-[150px] relative rounded-[7px] overflow-hidden border border-transparent hover:border-black group-hover:border group-hover:border-black transition duration-500">
+          <Image
+            src={image}
+            alt="product"
+            priority
+            fill
+            className="object-cover group-hover:opacity-0 rounded-[7px] transition duration-500 ease-linear"
+          />
+          {discountedPrice !== 0 && (
+            <div className="w-[60px] h-[32px] bg-[#EE5335] group-hover:opacity-0 flex justify-center items-center rounded-[4px] absolute top-[8px] left-[8px] transition duration-500">
+              <span className="text-[#fff] font-semibold">SALE</span>
+            </div>
+          )}
+          <div className="p-[10px]">
+            <div className="items-center gap-[8px] group-hover:flex hidden transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              <p className="text-[16px] text-[#FF3B30] font-bold">
+                {price.$numberDecimal}₾
+              </p>
+              {discountedPrice !== 0 && (
+                <p className="text-[14px] text-[#00000066] font-medium line-through">
+                  {item.price.$numberDecimal}₾
+                </p>
+              )}
+            </div>
+            <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              {title.length > 10 ? title.slice(0, 10) + "..." : title}
+            </p>
+            <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              მინიმალური
+            </p>
+            {productType == "meal" ? (
+              <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+                შეკვეთა: 5კგ
+              </p>
+            ) : (
+              ""
+            )}
+            <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
+              599 200 XXX
+            </p>
           </div>
-        )}
-      </div>
-      <div className="flex gap-2 justify-start items-center">
-        {discount ? (
-          <>
-            <p className="text-[#FF3B30] text-base font-semibold">
-              {discountedPrice.toFixed(2)}
+        </div>
+        <div className="mt-[8px]">
+          <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
+            <p className="text-[16px] text-[#FF3B30] font-bold">
+              {price.$numberDecimal}₾
             </p>
-            <p className="text-[#00000066] line-through text-sm font-medium">
-              {price.$numberDecimal}
-            </p>
-          </>
-        ) : (
-          <p className="text-black text-base font-semibold">
-            {price.$numberDecimal}
+            {discountedPrice !== 0 && (
+              <p className="text-[14px] text-[#00000066] font-medium line-through">
+                {price.$numberDecimal}₾
+              </p>
+            )}
+          </div>
+          <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:hidden transition duration-500">
+            {title.length > 10 ? title.slice(0, 10) + "..." : title}
           </p>
-        )}
+
+          <Link
+            href={`/product/${item._id}`}
+            className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100 w-full"
+          >
+            <div className="hidden group-hover:block mt-[8px] ">
+              <button
+                className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-[#514747]
+               hover:text-white transition duration-500 ease-in-out"
+              >
+                ვრცლად
+              </button>
+            </div>
+          </Link>
+        </div>
       </div>
-      <div>
-        <p className="text-sm font-medium">{title}</p>
-      </div>
-    </>
+    </div>
   );
 };
 
