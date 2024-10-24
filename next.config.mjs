@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["i.pinimg.com", "zoomart.ge"],
+    domains: ["lano.s3.eu-north-1.amazonaws.com"],
   },
 };
 
