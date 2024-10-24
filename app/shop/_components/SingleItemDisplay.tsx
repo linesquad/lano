@@ -30,7 +30,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
           <div className="p-[10px]">
             <div className="items-center gap-[8px] group-hover:flex hidden transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {price.$numberDecimal}₾
+                {discountAmount}₾
               </p>
               {discountedPrice !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
@@ -44,9 +44,9 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
             <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
               მინიმალური
             </p>
-            {productType == "meal" ? (
+            {productType ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: {mealDetails.weight}
+                შეკვეთა: {mealDetails.weight} კგ
               </p>
             ) : (
               ""
@@ -59,7 +59,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
         <div className="mt-[8px]">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {price.$numberDecimal}₾
+              {discountAmount}₾
             </p>
             {discountedPrice !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">

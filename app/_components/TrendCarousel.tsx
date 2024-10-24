@@ -26,7 +26,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const handleNext = () => {
     swiperRef.current?.slideNext();
   };
-  console.log(products.length);
+  
   const showRightArrow =
     currentIndex < products.length - Math.min(products.length, 5);
 
