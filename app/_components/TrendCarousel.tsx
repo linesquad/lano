@@ -17,7 +17,7 @@ interface TrendCarouselProps {
 export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+
 
   const handlePrev = () => {
     swiperRef.current?.slidePrev();
