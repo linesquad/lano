@@ -7,11 +7,13 @@ interface SingleProductProps {
 }
 
 export default function SingleProduct({ product }: SingleProductProps) {
+  const originalPrice = parseFloat(product.price.$numberDecimal);
   const discountAmount = product.discount
-    ? (parseFloat(product.price.$numberDecimal) * product.discount) / 100
+    ? (originalPrice * product.discount) / 100
     : 0;
   const discountedPrice =
-    parseFloat(product.price.$numberDecimal) - discountAmount;
+    product.discount > 0 ? originalPrice - discountAmount : originalPrice;
+
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-500">
@@ -31,7 +33,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
           <div className="p-[10px]">
             <div className="items-center gap-[8px] group-hover:flex hidden transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {discountAmount}₾
+                {discountedPrice}₾
               </p>
               {product.discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
@@ -62,7 +64,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
         <div className="mt-[8px] ">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {discountAmount}₾
+              {discountedPrice}₾
             </p>
             {product.discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">

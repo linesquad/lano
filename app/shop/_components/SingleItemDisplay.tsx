@@ -6,10 +6,12 @@ import { FC } from "react";
 const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
   const { image, title, price, discount, productType, mealDetails } = item;
 
-  const discountAmount = discount
-    ? (parseFloat(price.$numberDecimal) * discount) / 100
+  const originalPrice = parseFloat(item.price.$numberDecimal);
+  const discountAmount = item.discount
+    ? (originalPrice * item.discount) / 100
     : 0;
-  const discountedPrice = parseFloat(price.$numberDecimal) - discountAmount;
+  const discountedPrice =
+    item.discount > 0 ? originalPrice - discountAmount : originalPrice;
 
   return (
     <div className="flex flex-col items-center h-[230px]">
@@ -22,7 +24,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
             fill
             className="object-cover group-hover:opacity-0 rounded-[7px] transition duration-500 ease-linear"
           />
-          {discountedPrice !== 0 && (
+          {discount !== 0 && (
             <div className="w-[60px] h-[32px] bg-[#EE5335] group-hover:opacity-0 flex justify-center items-center rounded-[4px] absolute top-[8px] left-[8px] transition duration-500">
               <span className="text-[#fff] font-semibold">SALE</span>
             </div>
@@ -30,9 +32,9 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
           <div className="p-[10px]">
             <div className="items-center gap-[8px] group-hover:flex hidden transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
               <p className="text-[16px] text-[#FF3B30] font-bold">
-                {discountAmount}₾
+                {discountedPrice}₾
               </p>
-              {discountedPrice !== 0 && (
+              {discount !== 0 && (
                 <p className="text-[14px] text-[#00000066] font-medium line-through">
                   {item.price.$numberDecimal}₾
                 </p>
@@ -59,9 +61,9 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
         <div className="mt-[8px]">
           <div className="flex items-center gap-[8px] group-hover:hidden transition duration-500">
             <p className="text-[16px] text-[#FF3B30] font-bold">
-              {discountAmount}₾
+              {discountedPrice}₾
             </p>
-            {discountedPrice !== 0 && (
+            {discount !== 0 && (
               <p className="text-[14px] text-[#00000066] font-medium line-through">
                 {price.$numberDecimal}₾
               </p>
