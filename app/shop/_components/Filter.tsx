@@ -22,9 +22,9 @@ const Filter = async () => {
   const categories: Category[] = await fetchCategory();
 
   const animalIcons = [
-    { id: 1, src: dog, alt: "Dog", title: "Dogs" },
-    { id: 2, src: cat, alt: "Cat", title: "Cats" },
-    { id: 3, src: parrot, alt: "Parrot", title: "Birds" },
+    { id: 1, src: dog, alt: "Dog", title: "ძაღლი" },
+    { id: 2, src: cat, alt: "Cat", title: "კატა" },
+    { id: 3, src: parrot, alt: "Parrot", title: "ჩიტი" },
   ];
 
   return (

@@ -18,7 +18,6 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-
   const handlePrev = () => {
     swiperRef.current?.slidePrev();
   };
@@ -26,7 +25,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
   const handleNext = () => {
     swiperRef.current?.slideNext();
   };
-  
+
   const showRightArrow =
     currentIndex < products.length - Math.min(products.length, 5);
 
@@ -65,6 +64,12 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
               }}
               slidesPerView={Math.min(products.length, 5)}
               breakpoints={{
+                250: {
+                  slidesPerView: Math.min(products.length, 1),
+                },
+                280: {
+                  slidesPerView: Math.min(products.length, 1),
+                },
                 300: {
                   slidesPerView: Math.min(products.length, 2),
                 },
