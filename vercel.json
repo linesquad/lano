@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/shop/:subCarId*", "destination": "/shop/:subCarId*" },
+    { "source": "/product/:productId*", "destination": "/product/:productId*" }
+  ]
 }
