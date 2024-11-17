@@ -26,7 +26,7 @@ const Filter = async () => {
     { id: 2, src: cat, alt: "Cat", title: "კატა" },
     { id: 3, src: parrot, alt: "Parrot", title: "ჩიტი" },
   ];
-
+  console.log(categories);
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
@@ -37,12 +37,12 @@ const Filter = async () => {
           {categories.map((item: Category) => (
             <AccordionItem
               key={item._id}
-              value={item.title}
+              value={item.title.split("/")[0]}
               className="border-0"
             >
               <AccordionTrigger className="flex items-center justify-between w-full cursor-pointer border-0">
                 <span className="font-medium text-[#000] hover:text-[#EE5335] transition-all duration-300 ease-in-out">
-                  {item.title}
+                  {item.title.split("/")[0]}
                 </span>
               </AccordionTrigger>
               <AccordionContent className="pt-2 w-full">
@@ -53,9 +53,11 @@ const Filter = async () => {
                       className="py-1 cursor-pointer hover:text-[#EE5335] transition-all duration-300 ease-in-out"
                     >
                       <Link
-                        href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
+                        href={`/shop/${item.title.split("/")[0]}/${
+                          subItem.title.split("/")[0]
+                        }/${subItem._id}`}
                       >
-                        {subItem.title}
+                        {subItem.title.split("/")[0]}
                       </Link>
                     </li>
                   ))}
