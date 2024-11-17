@@ -18,13 +18,13 @@ const LanguageChangerDropDown = () => {
   const [selectedLanguage, setSelectedLanguage] = useState({
     code: "KA",
     label: "ქართული",
-    flag: "/images/GE.jpg",
+    flag: "/images/GE.webp",
   });
 
   const languages = [
-    { code: "KA", label: "ქართული", flag: "/images/GE.jpg" },
+    { code: "KA", label: "ქართული", flag: "/images/GE.webp" },
     { code: "EN", label: "English", flag: "/images/USA.webp" },
-    { code: "RU", label: "Русский", flag: "/images/RU.png" },
+    { code: "RU", label: "Русский", flag: "/images/RU.webp" },
   ];
 
   const handleLanguageChange = (language: Language) => {
