@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchByCatId } from "../../api/index";
+import { fetchByCatId } from "../../../api/index";
 import SingleItemDisplay from "../_components/SingleItemDisplay";
 
 const Page = async ({ params }: { params: { SubCatId: string[] } }) => {
@@ -7,7 +7,9 @@ const Page = async ({ params }: { params: { SubCatId: string[] } }) => {
   const response = await fetchByCatId(id, 1);
   if (!response || !response.products || response.products.length === 0) {
     return (
-      <h1 className="w-[70%] font-medium text-[#000] text-center">No Products found !</h1>
+      <h1 className="w-[70%] font-medium text-[#000] text-center">
+        No Products found !
+      </h1>
     );
   }
   const { products } = response;

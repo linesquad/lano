@@ -1,7 +1,7 @@
 import React from "react";
-import { fetchProduct } from "../../api";
 import SingleItemDisplay from "./SingleItemDisplay";
 import PaginationControls from "./PaginationControls";
+import { fetchProduct } from "@/app/api";
 
 const ProductsDisplay = async ({
   currentPage,
