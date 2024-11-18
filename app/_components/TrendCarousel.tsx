@@ -7,7 +7,7 @@ import "swiper/css";
 import Image from "next/image";
 import { Swiper as SwiperCore } from "swiper";
 import { ProductDetails } from "@/types/types";
-import SingleProduct from "../_components/SingleProduct";
+import SingleProduct from "./SingleProduct";
 
 interface TrendCarouselProps {
   title: string;
