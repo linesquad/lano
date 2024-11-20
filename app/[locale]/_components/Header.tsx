@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Wrapper from "./Wrapper";
 import Image from "next/image";
 
 import LanguageChangerDropDown from "./LanguageChangerDropDown";
+import { Link } from "@/navigation";
 const Header = () => {
   return (
     <div className="p-[20px]">

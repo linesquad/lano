@@ -1,4 +1,4 @@
-import { fetchPopularProducts, fetchSaleProducts } from "../api";
+import { fetchPopularProducts, fetchSaleProducts } from "../../api";
 import TrendCarousel from "./TrendCarousel";
 
 async function fetchProducts() {

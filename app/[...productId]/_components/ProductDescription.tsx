@@ -1,4 +1,4 @@
-import Wrapper from "@/app/_components/Wrapper";
+import Wrapper from "@/app/[locale]/_components/Wrapper";
 import { IOneProduct } from "@/types/types";
 
 interface ProductDescriptionProps {
