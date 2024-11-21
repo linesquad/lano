@@ -4,7 +4,6 @@ import dog from "../../../../public/images/dog.svg";
 import cat from "../../../../public/images/cat.svg";
 import parrot from "../../../../public/images/parrot.svg";
 import { Category } from "@/types/types";
-import Link from "next/link";
 import {
   Accordion,
   AccordionItem,
@@ -18,6 +17,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { fetchCategory } from "@/app/api";
+import { Link } from "@/navigation";
 
 const Filter = async () => {
   const categories: Category[] = await fetchCategory();

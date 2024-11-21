@@ -1,6 +1,6 @@
+import { Link } from "@/navigation";
 import { ProductDetails } from "@/types/types";
 import Image from "next/image";
-import Link from "next/link";
 
 interface SingleProductProps {
   product: ProductDetails;

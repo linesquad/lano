@@ -1,5 +1,7 @@
 {
-  "homePage": {
-    "shop": "Shop"
+  "Home": {
+    "shop": "Shop",
+    "saleProducts": "Sale Products",
+    "popularProducts": "Popular Products"
   }
 }

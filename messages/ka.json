@@ -1,5 +1,7 @@
 {
-  "homePage": {
-    "shop": "მაღაზია"
+  "Home": {
+    "shop": "მაღაზია",
+    "saleProducts": "ფასდაკლებული პროდუქტები",
+    "popularProducts": "პოპულარული პროდუქტები"
   }
 }

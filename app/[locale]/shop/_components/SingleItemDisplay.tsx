@@ -1,6 +1,6 @@
+import { Link } from "@/navigation";
 import { ProductDetails } from "@/types/types";
 import Image from "next/image";
-import Link from "next/link";
 import { FC } from "react";
 
 const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {

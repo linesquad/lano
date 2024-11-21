@@ -9,12 +9,19 @@ async function fetchProducts() {
   return { saleProducts, popularProducts };
 }
 
-export default async function ProductsDisplay() {
+export default async function ProductsDisplay({
+  popularProduct,
+  saleProduct,
+}: {
+  popularProduct: string;
+  saleProduct: string;
+}) {
   const { saleProducts, popularProducts } = await fetchProducts();
+
   return (
     <div>
-      <TrendCarousel title="ფასდაკლებული პროდუქტები" products={saleProducts} />
-      <TrendCarousel title="პოპულარული პროდუქტები" products={popularProducts} />
+      <TrendCarousel title={saleProduct} products={saleProducts} />
+      <TrendCarousel title={popularProduct} products={popularProducts} />
     </div>
   );
 }

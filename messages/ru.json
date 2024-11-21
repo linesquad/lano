@@ -1,5 +1,7 @@
 {
-  "homePage": {
-    "shop": "магазин"
+  "Home": {
+    "shop": "магазин",
+    "saleProducts": "Распродажа",
+    "popularProducts": "Популярные товары"
   }
 }

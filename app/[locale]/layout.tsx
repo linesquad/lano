@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "../globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -20,20 +22,28 @@ export const metadata: Metadata = {
   description: "Take care of your home pets",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: {
+    locale: string;
+  };
 }>) {
+  const { locale } = params;
+  const messages = await getMessages();
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <html lang={locale}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </NextIntlClientProvider>
   );
 }

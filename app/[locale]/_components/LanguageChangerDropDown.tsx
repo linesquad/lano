@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition, useEffect, useMemo } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,6 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { usePathname, useRouter } from "@/navigation";
+import { useParams } from "next/navigation";
 type Language = {
   code: string;
   label: string;
@@ -15,20 +17,36 @@ type Language = {
 };
 
 const LanguageChangerDropDown = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const params = useParams();
   const [selectedLanguage, setSelectedLanguage] = useState({
-    code: "KA",
-    label: "ქართული",
-    flag: "/images/GE.webp",
+    code: "en",
+    label: "English",
+    flag: "/images/USA.webp",
   });
 
-  const languages = [
-    { code: "KA", label: "ქართული", flag: "/images/GE.webp" },
-    { code: "EN", label: "English", flag: "/images/USA.webp" },
-    { code: "RU", label: "Русский", flag: "/images/RU.webp" },
-  ];
+  const languages = useMemo(
+    () => [
+      { code: "ka", label: "ქართული", flag: "/images/GE.webp" },
+      { code: "en", label: "English", flag: "/images/USA.webp" },
+      { code: "ru", label: "Русский", flag: "/images/RU.webp" },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    setSelectedLanguage(
+      languages.find((lang) => lang.code === params.locale) || selectedLanguage
+    );
+  }, [params.locale, selectedLanguage, languages]);
 
   const handleLanguageChange = (language: Language) => {
     setSelectedLanguage(language);
+    startTransition(() => {
+      router.replace(pathname, { locale: language.code });
+    });
   };
 
   return (
@@ -41,7 +59,14 @@ const LanguageChangerDropDown = () => {
             width={15}
             height={15}
           />
-          {selectedLanguage.code}
+          {isPending ? (
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+          ) : (
+            selectedLanguage.code
+          )}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

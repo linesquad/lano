@@ -1,9 +1,11 @@
 import Wrapper from "./Wrapper";
 import Image from "next/image";
-
 import LanguageChangerDropDown from "./LanguageChangerDropDown";
 import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
+
 const Header = () => {
+  const t = useTranslations("Home");
   return (
     <div className="p-[20px]">
       <Wrapper>
@@ -23,7 +25,9 @@ const Header = () => {
               href="/shop"
               className="w-[89px] h-[32px] md:w-[160px] md:h-[40px] rounded-[4px] bg-[#EE5335] flex items-center justify-center gap-[8px] cursor-pointer"
             >
-              <p className="text-[14px] font-semibold text-[#fff]">Shop</p>
+              <p className="text-[14px] font-semibold text-[#fff]">
+                {t("shop")}
+              </p>
               <Image
                 src="/images/paw.svg"
                 alt="logo"
