@@ -5,9 +5,11 @@ import Wrapper from "../_components/Wrapper";
 
 interface RootLayoutProps {
   children: React.ReactNode;
+  params: { locale: string };
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, params }: RootLayoutProps) {
+  const { locale } = params;
   return (
     <Wrapper>
       <div className="flex flex-col justify-center">
@@ -18,7 +20,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </div>
         <div className="flex flex-col md:flex-row items-start justify-center">
           <div className="md:w-[25%] w-full p-5 tiny:p-0">
-            <Filter />
+            <Filter locale={locale} />
           </div>
           {children}
         </div>

@@ -19,7 +19,7 @@ import {
 import { fetchCategory } from "@/app/api";
 import { Link } from "@/navigation";
 
-const Filter = async () => {
+const Filter = async ({ locale }: { locale: string }) => {
   const categories: Category[] = await fetchCategory();
 
   const animalIcons = [
@@ -27,7 +27,7 @@ const Filter = async () => {
     { id: 2, src: cat, alt: "Cat", title: "კატა" },
     { id: 3, src: parrot, alt: "Parrot", title: "ჩიტი" },
   ];
-
+  console.log(locale);
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
@@ -43,7 +43,11 @@ const Filter = async () => {
             >
               <AccordionTrigger className="flex items-center justify-between w-full cursor-pointer border-0">
                 <span className="font-medium text-[#000] hover:text-[#EE5335] transition-all duration-300 ease-in-out">
-                  {item.title}
+                  {locale == "ka"
+                    ? item.title.split("/")[0]
+                    : locale == "en"
+                    ? item.title.split("/")[1]
+                    : item.title.split("/")[2]}
                 </span>
               </AccordionTrigger>
               <AccordionContent className="pt-2 w-full">
