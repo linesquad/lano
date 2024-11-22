@@ -5,9 +5,13 @@ import { IOneProduct } from "@/types/types";
 
 interface ProductDetailsProps {
   oneProduct: IOneProduct;
+  localisation: string;
 }
 
-export default function ProductDetails({ oneProduct }: ProductDetailsProps) {
+export default function ProductDetails({
+  oneProduct,
+  localisation,
+}: ProductDetailsProps) {
   return (
     <div className="mt-[16px]">
       <Wrapper>
@@ -20,7 +24,7 @@ export default function ProductDetails({ oneProduct }: ProductDetailsProps) {
               className="object-cover rounded-[7px]"
             />
           </div>
-          <ProductsInfo oneProduct={oneProduct} />
+          <ProductsInfo oneProduct={oneProduct} localisation={localisation} />
         </div>
       </Wrapper>
     </div>

@@ -1,6 +1,6 @@
 interface OnePropertyProps {
   title: string;
-  value: string;
+  value: string | boolean;
 }
 
 export default function OneProperty({ title, value }: OnePropertyProps) {

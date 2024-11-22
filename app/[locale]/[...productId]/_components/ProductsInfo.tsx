@@ -6,29 +6,55 @@ import { IOneProduct } from "@/types/types";
 
 interface ProductsInfoProps {
   oneProduct: IOneProduct;
+  localisation: string;
 }
 
-export default function ProductsInfo({ oneProduct }: ProductsInfoProps) {
+export default function ProductsInfo({
+  oneProduct,
+  localisation,
+}: ProductsInfoProps) {
   return (
     <div className="mt-[91px] lg:mt-[0px] flex flex-col lg:w-full">
       <div className="flex flex-col gap-[16px] pb-[24px] border-b-[1px] border-b-[#00000066]">
         <h2 className="text-[#000000] font-bold md:text-[24px]">
-          {oneProduct.title}
+          {(localisation === "ka" && oneProduct.title.split("/")[0]) ||
+            (localisation === "en" && oneProduct.title.split("/")[1]) ||
+            (localisation === "ru" && oneProduct.title.split("/")[2])}
         </h2>
         <p className="text-[14px] text-[#000000] font-bold md:text-[20px]">
           {oneProduct.price.$numberDecimal} ₾
         </p>
       </div>
       <div className="mt-[24px] flex flex-col gap-[16px]">
-        <OneProperty title="ბრენდი" value={oneProduct.brand} />
-        <OneProperty title="ჯიში" value={oneProduct.productType} />
-        <OneProperty title="ასაკი" value={oneProduct.mealDetails.age} />
-        <OneProperty title="არომატი" value={oneProduct.mealDetails.aroma} />
-        <OneProperty title="წონა" value={oneProduct.mealDetails.weight} />
         <OneProperty
-          title="პროდუქტის კოდი"
-          value={oneProduct.mealDetails._id}
+          title="ბრენდი"
+          value={
+            (localisation === "ka" && oneProduct.brand.split("/")[0]) ||
+            (localisation === "en" && oneProduct.brand.split("/")[1]) ||
+            (localisation === "ru" && oneProduct.brand.split("/")[2])
+          }
         />
+        <OneProperty
+          title="ჯიში"
+          value={
+            (localisation === "ka" && oneProduct.productType.split("/")[0]) ||
+            (localisation === "en" && oneProduct.productType.split("/")[1]) ||
+            (localisation === "ru" && oneProduct.productType.split("/")[2])
+          }
+        />
+        <OneProperty title="ასაკი" value={oneProduct.mealDetails.age} />
+        <OneProperty
+          title="არომატი"
+          value={
+            (localisation === "ka" &&
+              oneProduct.mealDetails.aroma.split("/")[0]) ||
+            (localisation === "en" &&
+              oneProduct.mealDetails.aroma.split("/")[1]) ||
+            (localisation === "ru" &&
+              oneProduct.mealDetails.aroma.split("/")[2])
+          }
+        />
+        <OneProperty title="წონა" value={oneProduct.mealDetails.weight} />
       </div>
 
       <Dialog>
