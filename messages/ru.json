@@ -3,5 +3,12 @@
     "shop": "магазин",
     "saleProducts": "Распродажа",
     "popularProducts": "Популярные товары"
+  },
+  "Footer": {
+    "deliveryHours": "часы доставки",
+    "monday-friday": "Понедельник - Пятница",
+    "saturday-sunday": "Суббота - Воскресенье",
+    "contactUsText": "Свяжитесь с нами, чтобы заказать",
+    "companyText": "Все права защищены"
   }
 }

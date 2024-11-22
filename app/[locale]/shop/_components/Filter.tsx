@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import { fetchCategory } from "../../api";
 import dog from "../../../../public/images/dog.svg";
 import cat from "../../../../public/images/cat.svg";
 import parrot from "../../../../public/images/parrot.svg";
@@ -27,7 +26,7 @@ const Filter = async ({ locale }: { locale: string }) => {
     { id: 2, src: cat, alt: "Cat", title: "კატა" },
     { id: 3, src: parrot, alt: "Parrot", title: "ჩიტი" },
   ];
-  console.log(locale);
+
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
@@ -60,7 +59,11 @@ const Filter = async ({ locale }: { locale: string }) => {
                       <Link
                         href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
                       >
-                        {subItem.title}
+                        {locale == "ka"
+                          ? subItem.title.split("/")[0]
+                          : locale == "en"
+                          ? subItem.title.split("/")[1]
+                          : subItem.title.split("/")[2]}
                       </Link>
                     </li>
                   ))}

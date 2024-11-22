@@ -3,5 +3,12 @@
     "shop": "Shop",
     "saleProducts": "Sale Products",
     "popularProducts": "Popular Products"
+  },
+  "Footer": {
+    "deliveryHours": "Delivery hours",
+    "monday-friday": "Monday - Friday",
+    "saturday-sunday": "Saturday - Sunday",
+    "contactUsText": "Contact us to order",
+    "companyText": "All rights reserved"
   }
 }

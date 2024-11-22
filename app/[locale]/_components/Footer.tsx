@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import Wrapper from "./Wrapper";
+import { useTranslations } from "next-intl";
 
 const Footer = (): JSX.Element => {
+  const t = useTranslations("Footer");
   return (
     <div className="bg-[#1D1D1D] p-[20px] mt-[56px]">
       <Wrapper>
@@ -25,14 +27,14 @@ const Footer = (): JSX.Element => {
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
-                  მიტანის საათები
+                  {t("deliveryHours")}
                 </p>
                 <div className="mt-[16px] flex flex-col gap-[8px]">
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    ორშაბათი - პარასკევი 9:00 - 22:00
+                    {t("monday-friday")} 9:00 - 22:00
                   </p>
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    შაბათი - კვირა 12:00 - 20:00
+                    {t("saturday-sunday")} 12:00 - 20:00
                   </p>
                 </div>
               </div>
@@ -50,11 +52,11 @@ const Footer = (): JSX.Element => {
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
-                  შესაკვეთად დაგვიკავშირდით
+                  {t("contactUsText")}
                 </p>
                 <div className="mt-[16px] flex flex-col gap-[8px]">
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    +995 599 200 XXX
+                    +995 599 200 200
                   </p>
                 </div>
               </div>
@@ -71,7 +73,7 @@ const Footer = (): JSX.Element => {
         </div>
       </Wrapper>
       <p className="text-[12px] text-[#FFFFFF80] mt-[24px] text-center lg:text-[16px]">
-        © 2024 LineDevLTD. ყველა უფლება დაცულია.
+        © 2024 LineDevLTD. {t("companyText")}
       </p>
     </div>
   );
