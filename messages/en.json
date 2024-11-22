@@ -17,5 +17,9 @@
     "order": "Order",
     "kilogram": "kg",
     "sale": "SALE"
+  },
+  "LayoutText": {
+    "Home": "Home",
+    "shop": "Shop"
   }
 }

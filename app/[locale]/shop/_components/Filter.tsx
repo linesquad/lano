@@ -26,7 +26,6 @@ const Filter = async ({ locale }: { locale: string }) => {
     { id: 2, src: cat, alt: "Cat", title: "კატა" },
     { id: 3, src: parrot, alt: "Parrot", title: "ჩიტი" },
   ];
-
   return (
     <>
       <div className="tiny:hidden smaller:hidden hidden md:flex">
@@ -89,7 +88,9 @@ const Filter = async ({ locale }: { locale: string }) => {
 
             <DropdownMenuContent className="bg-white p-3 rounded-lg shadow-lg">
               {categories
-                .filter((category) => category.title === animal.title)
+                .filter(
+                  (category) => category.title.split("/")[0] === animal.title
+                )
                 .map((item) => (
                   <ul key={item._id}>
                     {item.subCategory.map((subItem: Category) => (
@@ -101,7 +102,11 @@ const Filter = async ({ locale }: { locale: string }) => {
                         <Link
                           href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
                         >
-                          {subItem.title}
+                          {locale == "ka"
+                            ? subItem.title.split("/")[0]
+                            : locale == "en"
+                            ? subItem.title.split("/")[1]
+                            : subItem.title.split("/")[2]}
                         </Link>
                       </DropdownMenuItem>
                     ))}
