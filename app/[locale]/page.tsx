@@ -1,9 +1,16 @@
 import Home from "./_components/Home";
-
-export default function Landing(): JSX.Element {
+type ParamsTypes = {
+  locale: string;
+};
+export default function Landing({
+  params,
+}: {
+  params: ParamsTypes;
+}): JSX.Element {
+  console.log(params);
   return (
     <main>
-      <Home />
+      <Home localisation={params.locale} />
     </main>
   );
 }

@@ -54,7 +54,7 @@ const Footer = (): JSX.Element => {
                 </p>
                 <div className="mt-[16px] flex flex-col gap-[8px]">
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    +995 599 200 XXX
+                    +995 599 200 200
                   </p>
                 </div>
               </div>
