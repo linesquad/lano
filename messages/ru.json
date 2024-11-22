@@ -10,5 +10,12 @@
     "saturday-sunday": "Суббота - Воскресенье",
     "contactUsText": "Свяжитесь с нами, чтобы заказать",
     "companyText": "Все права защищены"
+  },
+  "SingleItemDisplay": {
+    "more": "подробно",
+    "minimal": "минимальный",
+    "order": "заказ",
+    "kilogram": "кг",
+    "sale": "скидка"
   }
 }

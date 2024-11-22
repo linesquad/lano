@@ -5,8 +5,10 @@ import { fetchProduct } from "@/app/api";
 
 const ProductsDisplay = async ({
   currentPage,
+  locale,
 }: {
   currentPage: string | number | string[];
+  locale: string;
 }) => {
   const response = await fetchProduct(Number(currentPage));
   if (!response || !response.products || response.products.length === 0) {
@@ -22,7 +24,7 @@ const ProductsDisplay = async ({
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 tiny:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((item) => (
           <div key={item._id} className="tiny:max-w-[157px] tiny:max-h-[233px]">
-            <SingleItemDisplay item={item} />
+            <SingleItemDisplay item={item} locale={locale} />
           </div>
         ))}
       </div>

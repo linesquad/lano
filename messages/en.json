@@ -10,5 +10,12 @@
     "saturday-sunday": "Saturday - Sunday",
     "contactUsText": "Contact us to order",
     "companyText": "All rights reserved"
+  },
+  "SingleItemDisplay": {
+    "more": "Read more",
+    "minimal": "Minimum",
+    "order": "Order",
+    "kilogram": "kg",
+    "sale": "SALE"
   }
 }

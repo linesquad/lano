@@ -1,9 +1,13 @@
 import { Link } from "@/navigation";
 import { ProductDetails } from "@/types/types";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FC } from "react";
 
-const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
+const SingleItemDisplay: FC<{ item: ProductDetails; locale: string }> = ({
+  item,
+  locale,
+}) => {
   const { image, title, price, discount, productType, mealDetails } = item;
 
   const originalPrice = parseFloat(item.price.$numberDecimal);
@@ -13,6 +17,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
   const discountedPrice =
     item.discount > 0 ? originalPrice - discountAmount : originalPrice;
 
+  const t = useTranslations("SingleItemDisplay");
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[180px] lg:w-[180px] transition duration-500">
@@ -26,7 +31,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
           />
           {discount !== 0 && (
             <div className="w-[60px] h-[32px] bg-[#EE5335] group-hover:opacity-0 flex justify-center items-center rounded-[4px] absolute top-[8px] left-[8px] transition duration-500">
-              <span className="text-[#fff] font-semibold">SALE</span>
+              <span className="text-[#fff] font-semibold">{t("sale")}</span>
             </div>
           )}
           <div className="p-[10px]">
@@ -41,14 +46,19 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
               )}
             </div>
             <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              {title.length > 10 ? title.slice(0, 10) + "..." : title}
+              {/* {title.length > 10 ? title.slice(0, 10) + "..." : title} */}
+              {locale == "ka"
+                ? title.split("/")[0]
+                : locale == "en"
+                ? title.split("/")[1]
+                : title.split("/")[2]}
             </p>
             <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              მინიმალური
+              {t("minimal")}
             </p>
             {productType ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: {mealDetails.weight} კგ
+                {t("order")}: {mealDetails.weight} {t("kilogram")}
               </p>
             ) : (
               ""
@@ -70,7 +80,12 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
             )}
           </div>
           <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:hidden transition duration-500">
-            {title.length > 10 ? title.slice(0, 10) + "..." : title}
+            {/* {title.length > 10 ? title.slice(0, 10) + "..." : title} */}
+            {locale == "ka"
+              ? title.split("/")[0]
+              : locale == "en"
+              ? title.split("/")[1]
+              : title.split("/")[2]}
           </p>
 
           <Link
@@ -82,7 +97,7 @@ const SingleItemDisplay: FC<{ item: ProductDetails }> = ({ item }) => {
                 className="w-full text-black py-2 rounded-[7px] border border-black hover:bg-[#514747]
                hover:text-white transition duration-500 ease-in-out"
               >
-                ვრცლად
+                {t("more")}
               </button>
             </div>
           </Link>

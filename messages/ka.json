@@ -10,5 +10,12 @@
     "saturday-sunday": "შაბათი - კვირა",
     "contactUsText": "შესაკვეთად დაგვიკავშირდით",
     "companyText": "ყველა უფლება დაცულია"
+  },
+  "SingleItemDisplay": {
+    "more": "ვრცლად",
+    "minimal": "მინიმალური",
+    "order": "შეკვეთა",
+    "kilogram": "კგ",
+    "sale": "აქცია"
   }
 }
