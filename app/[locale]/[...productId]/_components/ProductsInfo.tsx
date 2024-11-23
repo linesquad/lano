@@ -3,7 +3,7 @@ import OneProperty from "./OneProperty";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { IOneProduct } from "@/types/types";
-
+import { useTranslations } from "next-intl";
 interface ProductsInfoProps {
   oneProduct: IOneProduct;
   localisation: string;
@@ -13,6 +13,7 @@ export default function ProductsInfo({
   oneProduct,
   localisation,
 }: ProductsInfoProps) {
+  const t = useTranslations("ProuctsInfo");
   return (
     <div className="mt-[91px] lg:mt-[0px] flex flex-col lg:w-full">
       <div className="flex flex-col gap-[16px] pb-[24px] border-b-[1px] border-b-[#00000066]">
@@ -27,7 +28,7 @@ export default function ProductsInfo({
       </div>
       <div className="mt-[24px] flex flex-col gap-[16px]">
         <OneProperty
-          title="ბრენდი"
+          title={t("brand")}
           value={
             (localisation === "ka" && oneProduct.brand.split("/")[0]) ||
             (localisation === "en" && oneProduct.brand.split("/")[1]) ||
@@ -35,16 +36,16 @@ export default function ProductsInfo({
           }
         />
         <OneProperty
-          title="ჯიში"
+          title={t("breed")}
           value={
             (localisation === "ka" && oneProduct.productType.split("/")[0]) ||
             (localisation === "en" && oneProduct.productType.split("/")[1]) ||
             (localisation === "ru" && oneProduct.productType.split("/")[2])
           }
         />
-        <OneProperty title="ასაკი" value={oneProduct.mealDetails.age} />
+        <OneProperty title={t("age")} value={oneProduct.mealDetails.age} />
         <OneProperty
-          title="არომატი"
+          title={t("aroma")}
           value={
             (localisation === "ka" &&
               oneProduct.mealDetails.aroma.split("/")[0]) ||
@@ -54,12 +55,12 @@ export default function ProductsInfo({
               oneProduct.mealDetails.aroma.split("/")[2])
           }
         />
-        <OneProperty title="წონა" value={oneProduct.mealDetails.weight} />
+        <OneProperty title={t("weight")} value={oneProduct.mealDetails.weight} />
       </div>
 
       <Dialog>
         <DialogTrigger className="w-[160px] h-[40px] mt-[20px] rounded-[7px] bg-[#EE5335] flex items-center justify-center gap-[10px] lg:self-end">
-          <p className="text-[14px] text-[#fff] font-semibold">შეძენა</p>
+          <p className="text-[14px] text-[#fff] font-semibold">{t("buy")}</p>
           <Image src="/images/paw.svg" alt="paw" width={16} height={16} />
         </DialogTrigger>
         <DialogContent className="w-[300px] md:w-[523px] rounded-[24px]">
@@ -75,14 +76,14 @@ export default function ProductsInfo({
                 />
                 <div>
                   <p className="text-[14px] lg:text-[18px] text-[#000] font-semibold">
-                    მიტანის საათები
+                    {t("delivery-time")}
                   </p>
                   <div className="mt-[16px] flex flex-col gap-[8px]">
                     <p className="text-[12px] lg:text-[16px] text-[#000]">
-                      ორშაბათი - პარასკევი 9:00 - 22:00
+                      {t("monday")}
                     </p>
                     <p className="text-[12px] lg:text-[16px] text-[#000]">
-                      შაბათი - კვირა 12:00 - 20:00
+                      {t("saturday")}
                     </p>
                   </div>
                 </div>
@@ -98,7 +99,7 @@ export default function ProductsInfo({
                 />
                 <div>
                   <p className="text-[14px] lg:text-[18px] text-[#000] font-semibold">
-                    შესაკვეთად დაგვიკავშირდით
+                    {t("contactUs")}
                   </p>
                   <div className="mt-[16px] flex flex-col gap-[8px]">
                     <p className="text-[12px] lg:text-[16px] text-[#000]">

@@ -3,5 +3,17 @@
     "shop": "Shop",
     "saleProducts": "Sale Products",
     "popularProducts": "Popular Products"
+  },
+  "ProuctsInfo": {
+    "contactUs": "Contact us to order",
+    "delivery-time": "Delivery hours",
+    "monday": "Monday - Friday 9:00 - 22:00",
+    "saturday": "Saturday - Sunday 12:00 - 20:00",
+    "brand": "Brand",
+    "breed": "Breed",
+    "aroma": "Aroma",
+    "weight": "Weight",
+    "age": "Age",
+    "buy": "Buy"
   }
 }
