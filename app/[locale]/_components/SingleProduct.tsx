@@ -1,19 +1,24 @@
 import { Link } from "@/navigation";
 import { ProductDetails } from "@/types/types";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface SingleProductProps {
   product: ProductDetails;
+  localisation: string;
 }
 
-export default function SingleProduct({ product }: SingleProductProps) {
+export default function SingleProduct({
+  product,
+  localisation,
+}: SingleProductProps) {
   const originalPrice = parseFloat(product.price.$numberDecimal);
   const discountAmount = product.discount
     ? (originalPrice * product.discount) / 100
     : 0;
   const discountedPrice =
     product.discount > 0 ? originalPrice - discountAmount : originalPrice;
-
+  const t = useTranslations("SingleProduct");
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-500">
@@ -42,16 +47,22 @@ export default function SingleProduct({ product }: SingleProductProps) {
               )}
             </div>
             <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              {product.title.length > 10
+              {localisation === "ka"
+                ? product.title.split("/")[0]
+                : localisation === "en"
+                ? product.title.split("/")[1]
+                : localisation === "ru"
+                ? product.title.split("/")[2]
+                : product.title.length > 10
                 ? product.title.slice(0, 10) + "..."
                 : product.title}
             </p>
             <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              მინიმალური
+              {t("minimal")}
             </p>
             {product.productType ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: {product.mealDetails.weight} კგ
+                {t("order")} {product.mealDetails.weight} {t("kg")}
               </p>
             ) : (
               ""
@@ -73,10 +84,17 @@ export default function SingleProduct({ product }: SingleProductProps) {
             )}
           </div>
           <p className="text-[14px] text-[#000000] font-medium mt-[8px] group-hover:hidden transition duration-500">
-            {product.title.length > 10
+            {localisation === "ka"
+              ? product.title.split("/")[0]
+              : localisation === "en"
+              ? product.title.split("/")[1]
+              : localisation === "ru"
+              ? product.title.split("/")[2]
+              : product.title.length > 10
               ? product.title.slice(0, 10) + "..."
               : product.title}
           </p>
+
           <Link
             href={`/product/${product._id}`}
             className="transition duration-500 opacity-0 group-hover:opacity-100 delay-100"

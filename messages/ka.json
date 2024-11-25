@@ -4,13 +4,6 @@
     "saleProducts": "ფასდაკლებული პროდუქტები",
     "popularProducts": "პოპულარული პროდუქტები"
   },
-  "Footer": {
-    "deliveryHours": "მიტანის საათები",
-    "monday-friday": "ორშაბათი - პარასკევი",
-    "saturday-sunday": "შაბათი - კვირა",
-    "contactUsText": "შესაკვეთად დაგვიკავშირდით",
-    "companyText": "ყველა უფლება დაცულია"
-  },
   "SingleItemDisplay": {
     "more": "ვრცლად",
     "minimal": "მინიმალური",
@@ -21,5 +14,35 @@
   "LayoutText": {
     "Home": "მთავარი",
     "shop": "მაღაზია"
+  },
+  "ProuctsInfo": {
+    "contactUs": "შესაკვეთად დაგვიკავშირდით",
+    "delivery-time": "მიტანის საათები",
+    "monday": "ორშაბათი - პარასკევი 9:00 - 22:00",
+    "saturday": "შაბათი - კვირა 12:00 - 20:00",
+    "brand": "ბრენდი",
+    "breed": "ჯიში",
+    "aroma": "არომატი",
+    "weight": "წონა",
+    "age": "ასაკი",
+    "buy": "შეძენა"
+  },
+  "ProductHeader": {
+    "main": "მთავარი"
+  },
+  "ProductDescription": {
+    "description": "პროდუქტის აღწერა"
+  },
+  "SingleProduct": {
+    "minimal": "მინიმალური",
+    "order": "შეკვეთა:",
+    "kg": "კგ"
+  },
+  "Footer": {
+    "delivery-time": "მიტანის საათები",
+    "monday": "ორშაბათი - პარასკევი 9:00 - 22:00",
+    "saturday": "შაბათი - კვირა 12:00 - 20:00",
+    "contactUs": "შესაკვეთად დაგვიკავშირდით",
+    "protected": "ყველა უფლება დაცულია."
   }
 }

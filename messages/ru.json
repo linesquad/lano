@@ -4,13 +4,6 @@
     "saleProducts": "Распродажа",
     "popularProducts": "Популярные товары"
   },
-  "Footer": {
-    "deliveryHours": "часы доставки",
-    "monday-friday": "Понедельник - Пятница",
-    "saturday-sunday": "Суббота - Воскресенье",
-    "contactUsText": "Свяжитесь с нами, чтобы заказать",
-    "companyText": "Все права защищены"
-  },
   "SingleItemDisplay": {
     "more": "подробно",
     "minimal": "минимальный",
@@ -21,5 +14,35 @@
   "LayoutText": {
     "Home": "основной",
     "shop": "магазин"
+  },
+  "ProuctsInfo": {
+    "contactUs": "Свяжитесь с нами для заказа",
+    "delivery-time": "Часы доставки",
+    "monday": "Понедельник - пятница 9:00 - 22:00",
+    "saturday": "Суббота - воскресенье 12:00 - 20:00",
+    "brand": "бренд",
+    "breed": "порода",
+    "aroma": "Аромат",
+    "weight": "Вес",
+    "age": "Возраст",
+    "buy": "купить"
+  },
+  "ProductHeader": {
+    "main": "Основной"
+  },
+  "ProductDescription": {
+    "description": "Описание продукта"
+  },
+  "SingleProduct": {
+    "minimal": "минимальный",
+    "order": "Заказ:",
+    "kg": "кг"
+  },
+  "Footer": {
+    "delivery-time": "Часы доставки",
+    "monday": "Понедельник - Пятница 9:00 - 22:00",
+    "saturday": "Суббота - Воскресенье 12:00 - 20:00",
+    "contactUs": "Свяжитесь с нами для заказа",
+    "protected": "Все права защищены."
   }
 }

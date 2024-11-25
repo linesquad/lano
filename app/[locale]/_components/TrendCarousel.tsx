@@ -11,10 +11,11 @@ import SingleProduct from "./SingleProduct";
 
 interface TrendCarouselProps {
   title: string;
+  localisation: string
   products: ProductDetails[];
 }
 
-export default function TrendCarousel({ title, products }: TrendCarouselProps) {
+export default function TrendCarousel({ title, products, localisation }: TrendCarouselProps) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -86,7 +87,7 @@ export default function TrendCarousel({ title, products }: TrendCarouselProps) {
             >
               {products.map((item) => (
                 <SwiperSlide key={item._id}>
-                  <SingleProduct product={item} />
+                  <SingleProduct product={item} localisation={localisation} />
                 </SwiperSlide>
               ))}
             </Swiper>

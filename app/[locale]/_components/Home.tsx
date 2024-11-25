@@ -5,7 +5,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import Wrapper from "./Wrapper";
 import { useTranslations } from "next-intl";
 
-const Home = (): JSX.Element => {
+const Home = ({localisation}: {localisation: string}): JSX.Element => {
   const t = useTranslations("Home");
   return (
     <div>
@@ -53,6 +53,7 @@ const Home = (): JSX.Element => {
         <ProductsDisplay
           popularProduct={t("popularProducts")}
           saleProduct={t("saleProducts")}
+          localisation={localisation}
         />
       </Suspense>
     </div>
