@@ -56,7 +56,19 @@ const Filter = async ({ locale }: { locale: string }) => {
                       className="py-1 cursor-pointer hover:text-[#EE5335] transition-all duration-300 ease-in-out"
                     >
                       <Link
-                        href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
+                        href={
+                          locale == "ka"
+                            ? `/shop/${item.title.split("/")[0]}/${
+                                subItem.title.split("/")[0]
+                              }/${subItem._id}`
+                            : locale == "en"
+                            ? `/shop/${item.title.split("/")[1]}/${
+                                subItem.title.split("/")[1]
+                              }/${subItem._id}`
+                            : `/shop/${item.title.split("/")[2]}/${
+                                subItem.title.split("/")[2]
+                              }/${subItem._id}`
+                        }
                       >
                         {locale == "ka"
                           ? subItem.title.split("/")[0]
@@ -100,7 +112,19 @@ const Filter = async ({ locale }: { locale: string }) => {
                         duration-300 ease-in-out text-[#000] font-medium"
                       >
                         <Link
-                          href={`/shop/${item.title}/${subItem.title}/${subItem._id}`}
+                          href={
+                            locale == "ka"
+                              ? `/shop/${item.title.split("/")[0]}/${
+                                  subItem.title.split("/")[0]
+                                }/${subItem._id}`
+                              : locale == "en"
+                              ? `/shop/${item.title.split("/")[1]}/${
+                                  subItem.title.split("/")[1]
+                                }/${subItem._id}`
+                              : `/shop/${item.title.split("/")[2]}/${
+                                  subItem.title.split("/")[2]
+                                }/${subItem._id}`
+                          }
                         >
                           {locale == "ka"
                             ? subItem.title.split("/")[0]
