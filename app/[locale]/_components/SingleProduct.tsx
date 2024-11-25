@@ -1,5 +1,6 @@
 import { Link } from "@/navigation";
 import { ProductDetails } from "@/types/types";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface SingleProductProps {
@@ -17,7 +18,7 @@ export default function SingleProduct({
     : 0;
   const discountedPrice =
     product.discount > 0 ? originalPrice - discountAmount : originalPrice;
-
+  const t = useTranslations("SingleProduct");
   return (
     <div className="flex flex-col items-center h-[230px]">
       <div className="group relative min-w-[150px] w-[150px] md:min-w-[170px] md:w-[170px] lg:min-w-[200px] lg:w-[200px] transition duration-500">
@@ -57,11 +58,11 @@ export default function SingleProduct({
                 : product.title}
             </p>
             <p className="text-[14px] text-[#000000] font-medium pt-[10px] group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-              მინიმალური
+              {t("minimal")}
             </p>
             {product.productType ? (
               <p className="text-[14px] text-[#000000] font-medium group-hover:block transition duration-500 opacity-0 group-hover:opacity-100 delay-300">
-                შეკვეთა: {product.mealDetails.weight} კგ
+                {t("order")} {product.mealDetails.weight} {t("kg")}
               </p>
             ) : (
               ""

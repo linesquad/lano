@@ -15,5 +15,16 @@
     "weight": "Вес",
     "age": "Возраст",
     "buy": "купить"
+  },
+  "ProductHeader": {
+    "main": "Основной"
+  },
+  "ProductDescription": {
+    "description": "Описание продукта"
+  },
+  "SingleProduct": {
+    "minimal": "минимальный",
+    "order": "Заказ:",
+    "kg": "кг"
   }
 }

@@ -17,7 +17,7 @@ const page = async ({ params }: PageProps) => {
   );
   return (
     <div>
-      <ProductHeader oneProduct={oneProduct} />
+      <ProductHeader oneProduct={oneProduct}  localisation={params.locale}/>
       <ProductDetails oneProduct={oneProduct} localisation={params.locale}/>
       <ProductDescription
         oneProduct={oneProduct}

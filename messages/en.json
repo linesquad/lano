@@ -15,5 +15,16 @@
     "weight": "Weight",
     "age": "Age",
     "buy": "Buy"
+  },
+  "ProductHeader": {
+    "main": "Main"
+  },
+  "ProductDescription": {
+    "description": "Product description"
+  },
+  "SingleProduct": {
+    "minimal": "Minimum",
+    "order": "Order:",
+    "kg": "kg"
   }
 }

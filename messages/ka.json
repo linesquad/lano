@@ -15,5 +15,16 @@
     "weight": "წონა",
     "age": "ასაკი",
     "buy": "შეძენა"
+  },
+  "ProductHeader": {
+    "main": "მთავარი"
+  },
+  "ProductDescription": {
+    "description": "პროდუქტის აღწერა"
+  },
+  "SingleProduct": {
+    "minimal": "მინიმალური",
+    "order": "შეკვეთა:",
+    "kg": "კგ"
   }
 }
