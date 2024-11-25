@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import Wrapper from "./Wrapper";
+import { useTranslations } from "next-intl";
 
 const Footer = (): JSX.Element => {
+  const t = useTranslations("Footer");
   return (
     <div className="bg-[#1D1D1D] p-[20px] mt-[56px]">
       <Wrapper>
@@ -25,14 +27,14 @@ const Footer = (): JSX.Element => {
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
-                  მიტანის საათები
+                  {t("delivery-time")}
                 </p>
                 <div className="mt-[16px] flex flex-col gap-[8px]">
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    ორშაბათი - პარასკევი 9:00 - 22:00
+                    {t("monday")}
                   </p>
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
-                    შაბათი - კვირა 12:00 - 20:00
+                    {t("saturday")}
                   </p>
                 </div>
               </div>
@@ -50,7 +52,7 @@ const Footer = (): JSX.Element => {
               />
               <div>
                 <p className="text-[14px] lg:text-[18px] text-[#fff] font-semibold">
-                  შესაკვეთად დაგვიკავშირდით
+                  {t("contactUs")}
                 </p>
                 <div className="mt-[16px] flex flex-col gap-[8px]">
                   <p className="text-[12px] lg:text-[16px] text-[#fff]">
@@ -60,18 +62,22 @@ const Footer = (): JSX.Element => {
               </div>
             </div>
           </div>
-
-          <Image
-            src="/images/fb-white.svg"
-            alt="time"
-            width={24}
-            height={24}
-            className="rounded-[50%]"
-          />
+          <a
+            href="https://www.facebook.com/profile.php?id=61555418867755"
+            target="_blank"
+          >
+            <Image
+              src="/images/fb-white.svg"
+              alt="time"
+              width={24}
+              height={24}
+              className="rounded-[50%]"
+            />
+          </a>
         </div>
       </Wrapper>
       <p className="text-[12px] text-[#FFFFFF80] mt-[24px] text-center lg:text-[16px]">
-        © 2024 LineDevLTD. ყველა უფლება დაცულია.
+        © 2024 LineDevLTD. {t("protected")}
       </p>
     </div>
   );

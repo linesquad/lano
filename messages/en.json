@@ -26,5 +26,12 @@
     "minimal": "Minimum",
     "order": "Order:",
     "kg": "kg"
+  },
+  "Footer": {
+    "delivery-time": "Delivery Hours",
+    "monday": "Monday - Friday 9:00 AM - 10:00 PM",
+    "saturday": "Saturday - Sunday 12:00 PM - 8:00 PM",
+    "contactUs": "Contact us to order",
+    "protected": "All rights reserved."
   }
 }
